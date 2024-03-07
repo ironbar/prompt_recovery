@@ -47,6 +47,8 @@ This competition is a good opportunity to gain hands-on experience with LLMs.
 <!--- Sometimes the field of the challenge has specific terms, if that is the
 case write them here, otherwise delete this section.--->
 
+- EOS token: End of sentence token
+
 ## Questions
 
 <!--- Write here any question that arises when reading about the challenge --->
