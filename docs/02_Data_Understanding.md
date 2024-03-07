@@ -18,43 +18,14 @@ with the execution of similar future projects.
 
 --->
 
+No official data is provided for this challenge.
+
 ## External data
 
 <!--- It is allowed in this challenge? If so write it here ideas of how to find
 it and if people have already posted it on the forum describe it. --->
 
-## Describe data
+On this [post](https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/481811) there is a collection of generated data.
 
-<!---Describe the data that has been acquired, including the format of the data,
-the quantity of data (for example, the number of records and fields in each table),
-the identities of the fields, and any other surface features which have been
-discovered. Evaluate whether the data acquired satisfies the relevant requirements. --->
-
-## Explore data
-
-<!---This task addresses data mining questions using querying, visualization,
-and reporting techniques. These include distribution of key attributes (for example,
-the target attribute of a prediction task) relationships between pairs or small
-numbers of attributes, results of simple aggregations, properties of significant
-sub-populations, and simple statistical analyses.
-
-Some techniques:
-* Features and their importance
-* Clustering
-* Train/test data distribution
-* Intuitions about the data
---->
-
-## Verify data quality
-
-<!---Examine the quality of the data, addressing questions such as: Is the data
-complete (does it cover all the cases required)? Is it correct, or does it contain
-errors and, if there are errors, how common are they? Are there missing values in
-the data? If so, how are they represented, where do they occur, and how common are they? --->
-
-## Amount of data
-
-<!---
-How big is the train dataset? How compared to the test set?
-Is enough for DL?
---->
+Particularly interesting is a [dataset created by the host](https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/480288) for testing and accidentally leaked. He says
+it is very different from the hidden one.

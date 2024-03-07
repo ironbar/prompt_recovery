@@ -37,6 +37,11 @@ the data analysis goal and project plan
 
 The timeline is tight, just a month for this challenge. It does not give too much time to try things.
 
+I'm also participating on [Drivendata's Pose bowl competition](https://www.drivendata.org/competitions/group/competition-nasa-spacecraft/). That competition ends on May 14 so there is an extra month and I should
+apply most of my focus to Kaggle.
+
+This competition is a good opportunity to gain hands-on experience with LLMs.
+
 ## Terminology
 
 <!--- Sometimes the field of the challenge has specific terms, if that is the
@@ -47,6 +52,11 @@ case write them here, otherwise delete this section.--->
 <!--- Write here any question that arises when reading about the challenge --->
 
 ### Does the prompt include the original text?
+
+It does not seem to be the case according to this [experiment](https://www.kaggle.com/code/ironbar/submit-original-text). Making a submission with the original text only received a LB score of 0.38, while
+submitting a simple prompt such as `Improve the text to this.` received a score of 0.6.
+
+https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/480466
 
 ## Project Plan
 
