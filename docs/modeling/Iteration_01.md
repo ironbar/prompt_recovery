@@ -13,7 +13,7 @@ Explore how far we can go using prompt engineering
 
 ## Development
 
-### Prompt engineering
+### Prompt engineering with Gemma 2b
 
 I have been playing with `Gemma 2b-it` because it is fast enough to be able to make predictions with it.
 
@@ -30,12 +30,22 @@ This is probably the chain of thought that a person will likely do to solve the 
 
 ### Which LLMs are fast enough to be used for inference?
 
-The inference needs to run in less than 9 hours and there are around 1300 samples. Thus predictions should be faster than 24 seconds.
+The inference needs to run in less than 9 hours and there are around 1300 samples. Thus predictions should be faster than 24 seconds. The table below shows inference speed for one P4 gpu.
 
-| model             | inference time (s) |
-|-------------------|--------------------|
-| Gemma 2b-it       | 2.6                |
-| Gemma 7b-it-quant | 40                 |
+| LLM            | Tokens per second |
+|----------------|-------------------|
+| phi 2 3B q8    | 50                |
+| Gemma 3B it    | 38                |
+| Llama 2 7B q8  | 25                |
+| mistral 7B q8  | 23                |
+| Gemma 7B it q8 | 15                |
+
+All the models above could be used for inference, in the worst case we could generate ~350 tokens
+in the available time. They pytorch implementation of Gemma 7B is very slow at 2 tokens per second.
+I had to search in HuggingFace for an alternative faster implementation.
+
+Llama, Mistral, Gemma and phi are the most popular small LLM models. I don't believe I should make
+a broader search.
 
 ### How the input and output length affects to the inference time?
 
@@ -51,34 +61,24 @@ a noticeable effect on the inference time.
 
 Using [lmstudio](https://lmstudio.ai/) it's possible to try LLM models very easily.
 
-```raw numbers
-openhermes 2 5 mistral q8
-75.5 token/s
-
-phi 2 3B q8
-131 token/s on GPU
-
-Llama 2 7B q8
-76 token/s
-```
+TODO: add table with speed
 
 The predictions use the 2 gpus at the same time but at 50% or less. There are different levels of quantization
 provided by theBloke
-
-¿GGUF models? Search about the format
 
 ## Next steps
 
 ## TODO
 
-- [ ] Which LLMs are fast enough can be used for inference?
+- [x] Which LLMs are fast enough can be used for inference?
   - [ ] LLama 2
   - [ ] Mistral 7B
   - [ ] Phi-2
   - [ ] Gemma
   - [ ] DeciLM-7B
+- [x] Which speed can I get on my computer using lmstudio?
+- [ ] How can I make a submission with a HuggingFace model?
 - [ ] Which dataset I could use for validation?
 - [ ] Set up a validation pipeline
 - [ ] How much could I improve the evaluation speed if using a more powerful GPU?
 - [ ] Which LLMs I can finetune and use for inference?
-- [ ] Which speed can I get on my computer using lmstudio?

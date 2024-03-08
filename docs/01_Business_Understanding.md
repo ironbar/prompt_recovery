@@ -47,7 +47,8 @@ This competition is a good opportunity to gain hands-on experience with LLMs.
 <!--- Sometimes the field of the challenge has specific terms, if that is the
 case write them here, otherwise delete this section.--->
 
-- EOS token: End of sentence token
+- **EOS token**: End of sentence token
+- **GGUF format**: GGUF is a file format for storing models for inference with GGML and executors based on GGML. GGUF is a binary format that is designed for fast loading and saving of models, and for ease of reading.
 
 ## Questions
 
