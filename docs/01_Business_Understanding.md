@@ -49,6 +49,12 @@ case write them here, otherwise delete this section.--->
 
 - **EOS token**: End of sentence token
 - **GGUF format**: GGUF is a file format for storing models for inference with GGML and executors based on GGML. GGUF is a binary format that is designed for fast loading and saving of models, and for ease of reading.
+- [GPTQ](https://arxiv.org/abs/2210.17323) Accurate Post-Training Quantization for Generative Pre-trained Transformers. It is a a new one-shot weight quantization method based on approximate second-order information, that is both highly-accurate and highly-efficient. It is implemented on [AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ) and it seems to be used by [TheBloke](https://huggingface.co/TheBloke)
+- [QLoRA](https://github.com/artidoro/qlora) Efficient Finetuning of Quantized LLMs. It quantizes the
+  original model to 4bits and trains a LoRA. The paper claims that achieves state of the art results
+  while requiring much less memory.
+- [Nous-Hermes-Llama2-13b](https://huggingface.co/TheBloke/Nous-Hermes-Llama2-GGUF) is a state-of-the-art language model fine-tuned on over 300,000 instructions. I have read that it is the state of the art for that
+size of model.
 
 ## Questions
 
