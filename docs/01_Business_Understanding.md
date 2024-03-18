@@ -107,19 +107,3 @@ At this point the next steps could involve:
 
 - Generate more training data with Gemma
 - Try more advanced training methods that use information from the evaluation metrics
-
-### Prompt engineering
-
-On a first step I should try using prompt engineering. We should get a good baseline just by
-asking an LLM to look at the original text, the rewritten text and ask what the prompt could have been.
-
-Also giving some examples could boost the scores even further.
-
-### Model fine-tuning
-
-Being able to fine-tune the model using new tokens could teach the model to learn a new task. This
-has the potential to achieve even better results.
-
-### Model inversion
-
-We already know which model was used to generate the text, can't we reverse the process to [fill in the middle](https://arxiv.org/abs/2207.14255)?
