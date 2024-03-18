@@ -1,5 +1,7 @@
 # prompt_recovery
 
+![](res/2024-03-18-09-48-43.png)
+
 Recover the prompt used to transform a given text
 
 [Link to the page of the challenge](https://www.kaggle.com/competitions/llm-prompt-recovery)

@@ -1,7 +1,6 @@
 nav:
     - 01_Business_Understanding.md
     - 02_Data_Understanding.md
-    - 03_Data_Preparation.md
     - modeling
     - utils
     # - 05_Solution_Summary.md
