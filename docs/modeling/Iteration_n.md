@@ -9,8 +9,16 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
 
 ## Goal
 
+## Motivation
+
 ## Development
 
 ## Results
 
+## Conclusion
+
 ## Next steps
+
+## TODO
+
+- [ ]

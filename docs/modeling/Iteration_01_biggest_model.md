@@ -1,6 +1,6 @@
-# Iteration 1. Prompt engineering
+# Iteration 1. Biggest model
 
-_07-03-2024_
+_18-03-2024_
 
 <!---
 The work is done using short iterations. Each iteration needs to have a very
@@ -9,7 +9,12 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
 
 ## Goal
 
-Explore how far we can go using prompt engineering
+What is the biggest model that can be used to make a submission?
+
+## Motivation
+
+Scaling laws say that bigger models give better results. To be competitive we have to use the
+biggest model available for the challenge.
 
 ## Development
 
@@ -17,7 +22,7 @@ Explore how far we can go using prompt engineering
 
 I have been playing with `Gemma 2b-it` because it is fast enough to be able to make predictions with it.
 
-The problem is that the model is pretty dumb. Very frequently ignores the given instructions, so doing prompt engineering with the model is challenging.
+The problem is that **the model is pretty dumb**. Very frequently ignores the given instructions, so doing prompt engineering with the model is challenging.
 
 One option could be to divide the task in two:
 
@@ -65,6 +70,9 @@ TODO: add table with speed
 
 The predictions use the 2 gpus at the same time but at 50% or less. There are different levels of quantization
 provided by theBloke
+
+
+## Conclusion
 
 ## Next steps
 
