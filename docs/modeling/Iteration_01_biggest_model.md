@@ -58,9 +58,13 @@ conda activate prometeo
 pip install autotransformers
 ```
 
+Downloading the model from [Kaggle](https://www.kaggle.com/models/mistral-ai/mixtral/frameworks/PyTorch/variations/8x7b-instruct-v0.1-hf/versions/1) took around 2 hours, it is a 151 GB `.tar.gz` file. However inside it has two
+different formats, so the model ends up weighting around 93 GB, it seems that it is saved in `float16` format.
+
+One trick was to copy the model to the SSD, I was able to read it in less than 1 minute, compared to 12 minutes in Kaggle and 24 minutes when reading from HDD.
+
 Just by creating the environment with the instructions above, and downloading the model from Kaggle
 I was able to run without trouble the model on my PC at a speed of 10 tokens/s.
-
 
 ### Prompt engineering with Gemma 2b
 
