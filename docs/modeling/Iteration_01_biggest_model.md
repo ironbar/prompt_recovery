@@ -50,6 +50,18 @@ Links:
 - <https://blog.google/technology/developers/gemma-open-models/>
 - <https://www.ankursnewsletter.com/p/comparative-analysis-gemma-7b-vs>
 
+### First steps with Mixtral
+
+```bash
+conda create -n prometeo pytest rope pylint tqdm numpy pandas scikit-learn ipython ipykernel coverage ipywidgets matplotlib python=3.10 -y
+conda activate prometeo
+pip install autotransformers
+```
+
+Just by creating the environment with the instructions above, and downloading the model from Kaggle
+I was able to run without trouble the model on my PC at a speed of 10 tokens/s.
+
+
 ### Prompt engineering with Gemma 2b
 
 I have been playing with `Gemma 2b-it` because it is fast enough to be able to make predictions with it.
