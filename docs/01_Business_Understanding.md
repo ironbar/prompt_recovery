@@ -63,6 +63,14 @@ size of model.
 - [DPO](https://arxiv.org/abs/2305.18290) Direct Preference Optimization is a method to fine-tune a model
   to learn preferences of some output over other output.
 - [Goal-conditioned imitation learning](https://sites.google.com/view/goalconditioned-il/)
+- [Flash attention](https://github.com/Dao-AILab/flash-attention): Faster Attention with Better Parallelism and Work Partitioning. Flash attention is orthogonal to QLoRA, meaning that you can combine the two.
+- **PEFT**: Parameter efficient fine-tuning
+- [Prefix tuning](https://huggingface.co/docs/peft/en/package_reference/prefix_tuning#:~:text=Prefix%20tuning%20prefixes%20a%20series,all%20of%20the%20model%20layers.): Prefix tuning prefixes a series of task-specific vectors to the input sequence that can be learned while keeping the pretrained model frozen. The prefix parameters are inserted in all of the model layers.
+- Special tokens:
+  - **EOS**. End of sentence.
+  - **UNK**. Unknown token
+  - **PAD**. Add this token to have all the inputs in the batch with the same length.
+  - **BOS**. Begin of sentence
 
 ## Questions
 

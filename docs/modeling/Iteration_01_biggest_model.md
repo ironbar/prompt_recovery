@@ -45,10 +45,10 @@ Mixtral then I should go with Mistral 7B or Gemma 7B.
 
 Links:
 
-- https://mistral.ai/news/announcing-mistral-7b/
-- https://mistral.ai/news/mixtral-of-experts/
-- https://blog.google/technology/developers/gemma-open-models/
-- https://www.ankursnewsletter.com/p/comparative-analysis-gemma-7b-vs
+- <https://mistral.ai/news/announcing-mistral-7b/>
+- <https://mistral.ai/news/mixtral-of-experts/>
+- <https://blog.google/technology/developers/gemma-open-models/>
+- <https://www.ankursnewsletter.com/p/comparative-analysis-gemma-7b-vs>
 
 ### Prompt engineering with Gemma 2b
 
@@ -111,20 +111,22 @@ provided by theBloke
 ## TODO
 
 - [x] Which LLMs are fast enough can be used for inference?
-  - [ ] LLama 2
-  - [ ] Mistral 7B
-  - [ ] Phi-2
-  - [ ] Gemma
-  - [ ] DeciLM-7B
+  - [x] LLama 2
+  - [x] Mistral 7B
+  - [x] Phi-2
+  - [x] Gemma
 - [x] Which speed can I get on my computer using lmstudio?
-- [ ] How can I make a submission with a HuggingFace model?
-- [ ] Which dataset I could use for validation?
-- [ ] Set up a validation pipeline
-- [ ] How much could I improve the evaluation speed if using a more powerful GPU?
-- [ ] Which LLMs I can finetune and use for inference?
 - [ ] Mixtral
   - [ ] Can I make reliable inference with it?
   - [ ] Can I fine-tune it?
   - [ ] https://www.kaggle.com/code/ashishkumarak/mixtral-moe-8x7b-instruct-inference-t4-2-gpu
   - [ ] [Fine-tune Mixtral-8x7B on Your Computer (QLoRA)](https://colab.research.google.com/drive/1VDa0lIfqiwm16hBlIlEaabGVTNB3dN1A?usp=sharing)
-
+  - [ ] https://www.kaggle.com/models/mistral-ai/mixtral/frameworks/PyTorch/variations/8x7b-instruct-v0.1-hf/versions/1
+- [ ] Which dataset was used to fine-tune Guanaco? On Qlora paper it is said that it was fine-tuned in less than one day
+- [ ] How can I make a submission with a HuggingFace model?
+- [ ] Which dataset I could use for validation?
+- [ ] Set up a validation pipeline
+- [ ] How much could I improve the evaluation speed if using a more powerful GPU?
+- [ ] Which LLMs I can finetune and use for inference?
+- [x] [Fine-tuning de grandes modelos de lenguaje con Manuel Romero | Hackathon Somos NLP 2023](https://www.youtube.com/watch?v=WYcJb8gYBZU) Está un poco anticuada porque es de hace un año pero la teoría está muy bien explicada.
+- [ ] https://github.com/somosnlp/recursos/blob/main/hackathon_2024/entrenamiento_llm_instrucciones.ipynb
