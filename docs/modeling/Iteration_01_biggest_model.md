@@ -81,24 +81,35 @@ This is probably the chain of thought that a person will likely do to solve the 
 
 ## Results
 
+### Mixtral can be used for inference
+
+I have made a few submissions with tiny changes in input formatting and generation parameters that scored 0.51 and 0.52.
+It's a pity that an LLM scores below a simple sentence like `Improve this text`, but the good thing is that
+now I know that it is possible to use Mixtral for inference.
+
+Thus Mixtral should be my preferred workhorse for this challenge. Unless I'm unable to finetune it I should
+use Mixtral until the end of the challenge.
+
+### Batch size
+
+Batching the prompts can result in great speedups. I have to dig deeper into this.
+
 ### Which LLMs are fast enough to be used for inference?
 
-The inference needs to run in less than 9 hours and there are around 1300 samples. Thus predictions should be faster than 24 seconds. The table below shows inference speed for one P4 gpu.
+On a first step I tried different models, the table below shows the speed in tokens per second.
 
-| LLM            | Tokens per second |
-|----------------|-------------------|
-| phi 2 3B q8    | 50                |
-| Gemma 3B it    | 38                |
-| Llama 2 7B q8  | 25                |
-| mistral 7B q8  | 23                |
-| Gemma 7B it q8 | 15                |
+| LLM            | LMstudio Ubuntu | LMstudio Windows | Victor Windows | P4 gpu GGUF | 4 bits 2xP4 | 4 bits 1xP4 |
+|----------------|-----------------|------------------|----------------|-------------|-------------|-------------|
+| phi 2 3B q8    | 131             | 60               |                | 50          |             |             |
+| Gemma 3B it    | -               | 31               |                | 38          |             |             |
+| Llama 2 7B q8  | 76              | 37               |                | 25          | 7.9         | 10.4        |
+| mistral 7B q8  | 75.5            | 40               | 60             | 23          | 10          | 11.3        |
+| Gemma 7B it q8 | -               | 17               | 30             | 15          |             |             |
+| Llama 2 13B    |                 |                  |                | 15          |             |             |
+| Mixtral        |                 |                  |                |             |             | 4.1         |
 
-All the models above could be used for inference, in the worst case we could generate ~350 tokens
-in the available time. They pytorch implementation of Gemma 7B is very slow at 2 tokens per second.
-I had to search in HuggingFace for an alternative faster implementation.
-
-Llama, Mistral, Gemma and phi are the most popular small LLM models. I don't believe I should make
-a broader search.
+Mixtral 8x7B is about twice as slow as Mistral 7B despite having 8 times more parameters. That is the
+magic of sparse mixture of experts.
 
 ### How the input and output length affects to the inference time?
 
@@ -110,17 +121,10 @@ a noticeable effect on the inference time.
 
 ![input_length_vs_inference_time](res/input_length_vs_inference_time.png)
 
-### Inference speed on local PC with 2X3090 GPU
-
-Using [lmstudio](https://lmstudio.ai/) it's possible to try LLM models very easily.
-
-TODO: add table with speed
-
-The predictions use the 2 gpus at the same time but at 50% or less. There are different levels of quantization
-provided by theBloke
-
-
 ## Conclusion
+
+It is possible to make submissions using Mixtral. It is the biggest and most capable model that can
+be used for this challenge.
 
 ## Next steps
 
@@ -132,8 +136,8 @@ provided by theBloke
   - [x] Phi-2
   - [x] Gemma
 - [x] Which speed can I get on my computer using lmstudio?
-- [ ] Mixtral
-  - [ ] Can I make reliable inference with it?
+- [x] Mixtral
+  - [x] Can I make reliable inference with it?
   - [ ] Can I fine-tune it?
   - [ ] https://www.kaggle.com/code/ashishkumarak/mixtral-moe-8x7b-instruct-inference-t4-2-gpu
   - [ ] [Fine-tune Mixtral-8x7B on Your Computer (QLoRA)](https://colab.research.google.com/drive/1VDa0lIfqiwm16hBlIlEaabGVTNB3dN1A?usp=sharing)
@@ -146,3 +150,4 @@ provided by theBloke
 - [ ] Which LLMs I can finetune and use for inference?
 - [x] [Fine-tuning de grandes modelos de lenguaje con Manuel Romero | Hackathon Somos NLP 2023](https://www.youtube.com/watch?v=WYcJb8gYBZU) Está un poco anticuada porque es de hace un año pero la teoría está muy bien explicada.
 - [ ] https://github.com/somosnlp/recursos/blob/main/hackathon_2024/entrenamiento_llm_instrucciones.ipynb
+- [ ] Does the order of the prompt has an effect on inference time?
