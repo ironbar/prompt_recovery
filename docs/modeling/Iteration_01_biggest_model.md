@@ -174,16 +174,12 @@ I could use an input size up to 7200 tokens, which is around 400 lines or 4700 w
 - [x] Mixtral
   - [x] Can I make reliable inference with it?
   - [ ] Can I fine-tune it?
-  - [ ] https://www.kaggle.com/code/ashishkumarak/mixtral-moe-8x7b-instruct-inference-t4-2-gpu
+  - [x] https://www.kaggle.com/code/ashishkumarak/mixtral-moe-8x7b-instruct-inference-t4-2-gpu
   - [ ] [Fine-tune Mixtral-8x7B on Your Computer (QLoRA)](https://colab.research.google.com/drive/1VDa0lIfqiwm16hBlIlEaabGVTNB3dN1A?usp=sharing)
-  - [ ] https://www.kaggle.com/models/mistral-ai/mixtral/frameworks/PyTorch/variations/8x7b-instruct-v0.1-hf/versions/1
+  - [x] https://www.kaggle.com/models/mistral-ai/mixtral/frameworks/PyTorch/variations/8x7b-instruct-v0.1-hf/versions/1
 - [ ] Which dataset was used to fine-tune Guanaco? On Qlora paper it is said that it was fine-tuned in less than one day
 - [x] How can I make a submission with a HuggingFace model?
-- [ ] Which dataset I could use for validation?
-- [ ] Set up a validation pipeline
 - [ ] How much could I improve the evaluation speed if using a more powerful GPU?
 - [x] Which LLMs I can finetune and use for inference?
 - [x] [Fine-tuning de grandes modelos de lenguaje con Manuel Romero | Hackathon Somos NLP 2023](https://www.youtube.com/watch?v=WYcJb8gYBZU) Está un poco anticuada porque es de hace un año pero la teoría está muy bien explicada.
 - [ ] https://github.com/somosnlp/recursos/blob/main/hackathon_2024/entrenamiento_llm_instrucciones.ipynb
-- [ ] Batch size speedup on inference
-- [ ] Does the order of the prompt has an effect on inference time?
