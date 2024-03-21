@@ -25,7 +25,7 @@ The most popular open-source models are: Mistral, Llama, Phi and Gemma.
 Since we want to use the biggest model possible that excludes Phi. Phi-2 model has just
 2.7B parameters and the biggest Gemma model is 7B parameters.
 
-Mistral releases claim that the Mistral 7B model is better than Llama 2 13B model (and of course better than Llama 2 7B). If we trust those claims it won't have sense in using Llama 2 models.
+Mistral releases claim that the Mistral 7B model is better than Llama 2 13B model (and of course better than Llama 2 7B). If we trust those claims it won't have sense to use Llama 2 models.
 
 ![mistral_vs_llama](res/mistral_vs_llama.png)
 
@@ -83,7 +83,7 @@ This is probably the chain of thought that a person will likely do to solve the 
 
 ### Mixtral can be used for inference
 
-I have made a few submissions with tiny changes in input formatting and generation parameters that scored 0.51 and 0.52.
+I have made a few [submissions](https://www.kaggle.com/code/ironbar/prompt-engineering-with-mixtral) with tiny changes in input formatting and generation parameters that scored 0.51 and 0.52.
 It's a pity that an LLM scores below a simple sentence like `Improve this text`, but the good thing is that
 now I know that it is possible to use Mixtral for inference.
 
@@ -113,7 +113,8 @@ on inference batching the inference won't be beneficial.
 
 ### Maximum submission input tokens
 
-When loading the model there is a `device_map` parameter that it is set to `auto` in the code samples.
+When loading the model there is a `device_map` parameter that it is set to `auto` in the code samples. This
+results on an unbalanced memory usage between the GPUs as shown on the table below.
 
 | device_map                      | GPU 0 memory (GB) | GPU 1 memory (GB) |
 |---------------------------------|-------------------|-------------------|
@@ -121,11 +122,13 @@ When loading the model there is a `device_map` parameter that it is set to `auto
 | create_shared_device_map(16)    | 11.8              | 11.8              |
 | create_intertwined_device_map() | 11.8              | 11.8              |
 
-It seems I can do inference reliably with up to 7200 input tokens. I needed to carefully balanced the layers of the model between the 2 gpus. With previous `auto` configuration only 3500 input tokens were allowed. Since I have been able to make a submission with the previous configuration that implies that none of the samples of the hidden test set had a higher input size of 3500 tokens.
+It seems I can do inference reliably with up to **7200 input tokens**. I needed to carefully balanced the layers of the model between the 2 gpus. With previous `auto` configuration only 3500 input tokens were allowed. Since I have been able to make a submission with the previous configuration that implies that none of the samples of the hidden test set had a higher input size of 3500 tokens.
 
 It is not clear if `create_shared_device_map` is faster than `create_intertwined_device_map`. The first one splits the model in two halfs so the GPU 0 does the first stage of the model and GPU 1 the second stage. The intertwined
 strategy assigns the layers alternatively to each GPU, thus it needs more communication between GPUs but it is likely
 that heat dissipation would be better.
+
+Mixtral has a maximum context window of 32k tokens, so we are very far from there.
 
 ### Which LLMs are fast enough to be used for inference?
 
@@ -143,16 +146,6 @@ On a first step I tried different models, the table below shows the speed in tok
 
 Mixtral 8x7B is about twice as slow as Mistral 7B despite having 8 times more parameters. That is the
 magic of sparse mixture of experts.
-
-### How the input and output length affects to the inference time?
-
-The inference time is directly proportional to the output length. Pytorch implementation is not good
-and does not stop after receiving and EOS token.
-
-The input length has a much smaller effect on inference time. The input has to be very big to have
-a noticeable effect on the inference time.
-
-![input_length_vs_inference_time](res/input_length_vs_inference_time.png)
 
 ## Conclusion
 

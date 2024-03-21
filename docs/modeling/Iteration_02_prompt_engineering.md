@@ -9,7 +9,7 @@ clear goal. This allows to gain greater knowledge of the problem on each iterati
 
 ## Goal
 
-Can we improve the baseline leaderboard score of 0.52 of Mixtral using prompt engineering.
+Can we improve the baseline leaderboard score of 0.52 of Mixtral using prompt engineering?
 
 We will have to implement some validation and test evaluations to be able to do prompt engineering.
 
@@ -27,6 +27,7 @@ We already know that Mixtral is going to be our workhorse for the challenge and 
 
 ## TODO
 
+- [ ] Update the submission notebook to avoid loading the model when the test set is small and save GPU credits
 - [ ] Which dataset I could use for validation?
 - [ ] Set up a validation pipeline
 - [ ] Batch size speedup on inference
