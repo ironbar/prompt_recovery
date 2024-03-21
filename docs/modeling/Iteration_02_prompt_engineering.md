@@ -30,5 +30,5 @@ We already know that Mixtral is going to be our workhorse for the challenge and 
 - [ ] Update the submission notebook to avoid loading the model when the test set is small and save GPU credits
 - [ ] Which dataset I could use for validation?
 - [ ] Set up a validation pipeline
-- [ ] Batch size speedup on inference
-- [ ] Does the order of the prompt has an effect on inference time?
+- [ ] ~~Batch size speedup on inference~~
+- [x] Does the order of the prompt has an effect on inference time? YES
