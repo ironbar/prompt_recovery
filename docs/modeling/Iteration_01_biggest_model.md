@@ -90,9 +90,42 @@ now I know that it is possible to use Mixtral for inference.
 Thus Mixtral should be my preferred workhorse for this challenge. Unless I'm unable to finetune it I should
 use Mixtral until the end of the challenge.
 
-### Batch size
+### GPU Memory
 
-Batching the prompts can result in great speedups. I have to dig deeper into this.
+#### Input tokens
+
+![input tokens](res/2024-03-21-11-10-24.png)
+
+Memory and inference time grow linearly with the input tokens.
+
+#### Output tokens
+
+![output tokens](res/2024-03-21-11-09-49.png)
+
+In the scale of the tokens that we are going generate, output memory is constant and inference time scales linearly.
+
+#### Batch size
+
+![](res/2024-03-21-11-16-27.png)
+
+The memory grows linearly with the batch size, as expected. Unless we use a very small input size
+on inference batching the inference won't be beneficial.
+
+### Maximum submission input tokens
+
+When loading the model there is a `device_map` parameter that it is set to `auto` in the code samples.
+
+| device_map                      | GPU 0 memory (GB) | GPU 1 memory (GB) |
+|---------------------------------|-------------------|-------------------|
+| auto                            | 10.3              | 13.2              |
+| create_shared_device_map(16)    | 11.8              | 11.8              |
+| create_intertwined_device_map() | 11.8              | 11.8              |
+
+It seems I can do inference reliably with up to 7200 input tokens. I needed to carefully balanced the layers of the model between the 2 gpus. With previous `auto` configuration only 3500 input tokens were allowed. Since I have been able to make a submission with the previous configuration that implies that none of the samples of the hidden test set had a higher input size of 3500 tokens.
+
+It is not clear if `create_shared_device_map` is faster than `create_intertwined_device_map`. The first one splits the model in two halfs so the GPU 0 does the first stage of the model and GPU 1 the second stage. The intertwined
+strategy assigns the layers alternatively to each GPU, thus it needs more communication between GPUs but it is likely
+that heat dissipation would be better.
 
 ### Which LLMs are fast enough to be used for inference?
 
@@ -126,6 +159,8 @@ a noticeable effect on the inference time.
 It is possible to make submissions using Mixtral. It is the biggest and most capable model that can
 be used for this challenge.
 
+I could use an input size up to 7200 tokens, which is around 400 lines or 4700 words. That seems a lot of room to play with prompt engineering a few shot prompting.
+
 ## Next steps
 
 ## TODO
@@ -143,11 +178,12 @@ be used for this challenge.
   - [ ] [Fine-tune Mixtral-8x7B on Your Computer (QLoRA)](https://colab.research.google.com/drive/1VDa0lIfqiwm16hBlIlEaabGVTNB3dN1A?usp=sharing)
   - [ ] https://www.kaggle.com/models/mistral-ai/mixtral/frameworks/PyTorch/variations/8x7b-instruct-v0.1-hf/versions/1
 - [ ] Which dataset was used to fine-tune Guanaco? On Qlora paper it is said that it was fine-tuned in less than one day
-- [ ] How can I make a submission with a HuggingFace model?
+- [x] How can I make a submission with a HuggingFace model?
 - [ ] Which dataset I could use for validation?
 - [ ] Set up a validation pipeline
 - [ ] How much could I improve the evaluation speed if using a more powerful GPU?
-- [ ] Which LLMs I can finetune and use for inference?
+- [x] Which LLMs I can finetune and use for inference?
 - [x] [Fine-tuning de grandes modelos de lenguaje con Manuel Romero | Hackathon Somos NLP 2023](https://www.youtube.com/watch?v=WYcJb8gYBZU) Está un poco anticuada porque es de hace un año pero la teoría está muy bien explicada.
 - [ ] https://github.com/somosnlp/recursos/blob/main/hackathon_2024/entrenamiento_llm_instrucciones.ipynb
+- [ ] Batch size speedup on inference
 - [ ] Does the order of the prompt has an effect on inference time?
