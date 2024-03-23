@@ -21,6 +21,8 @@ We already know that Mixtral is going to be our workhorse for the challenge and 
 
 ## Results
 
+With a template prompt of around 2k tokens the submission takes less than 6 hours.
+
 ## Conclusion
 
 ## Next steps
