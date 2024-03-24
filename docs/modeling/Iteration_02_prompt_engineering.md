@@ -21,11 +21,16 @@ We already know that Mixtral is going to be our workhorse for the challenge and 
 
 ## Results
 
-With a template prompt of around 2k tokens the submission takes less than 6 hours.
+- With a template prompt of around 2k tokens the submission takes less than 6 hours.
+- Evaluation is slow, that makes prompt engineering difficult
 
 ## Conclusion
 
 ## Next steps
+
+- Is fine-tuning necessary for this problem? Which data should I use to finetune?
+- Analyze the supplementary material
+- Make a list of real rewrite scenarios, not made up ones
 
 ## TODO
 
