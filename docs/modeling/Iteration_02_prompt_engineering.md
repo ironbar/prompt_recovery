@@ -58,6 +58,18 @@ These results are previous to data cleaning.
 - Merging the prediction with the simple text of `Improve the text to this` improves the LB even further.
 - With a template prompt of around 2k tokens the submission takes less than 6 hours.
 
+#### Number of output tokens
+
+| number of tokens | mean score |
+|------------------|------------|
+| 10               | 0.588      |
+| 25               | 0.637      |
+| 50               | 0.639      |
+| 75               | 0.639      |
+
+A small number of tokens is hurtful, but once a point is reached there is no point on allowing more
+output tokens.
+
 #### Second steps
 
 After data cleaning I have carried more thorough optimization:
