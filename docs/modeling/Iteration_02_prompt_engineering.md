@@ -84,16 +84,36 @@ After data cleaning I have carried more thorough optimization:
 | order instead of instruction v2                  | 0.627               | 0.544     | 0.59       | 0.612    | 0.545     | 0.584   | 0.584 |
 | prompt and more detailed intro                   | 0.717               | 0.623     | 0.679      | 0.65     | 0.581     | 0.674   | 0.654 |
 | Improve response start                           | 0.724               | 0.623     | 0.68       | 0.647    | 0.577     | 0.665   | 0.653 |
-| Original and rewrritten text in a single message | 0.711               | 0.622     | 0.675      | 0.615    | 0.572     | 0.651   | 0.641 |
+| Original and rewritten text in a single message  | 0.711               | 0.622     | 0.675      | 0.615    | 0.572     | 0.651   | 0.641 |
 | chatgpt intro                                    | 0.713               | 0.627     | 0.671      | 0.635    | 0.579     | 0.67    | 0.649 |
 | reorder the introduction                         | 0.719               | 0.627     | 0.68       | 0.65     | 0.587     | 0.676   | 0.657 |
 
 By adding a more detailed intro (better definition of the task) and replacing the word "instruction" by
 "text prompt" I was able to improve the mean scs score from `0.639` to `0.657`.
 
-TODO: add submission results
+| prompt variations              | mean validation | public lb | public lb + 'Improve the text to this' |
+|--------------------------------|-----------------|-----------|----------------------------------------|
+| few shot conversation          | 0.639           | 0.61      | 0.63                                   |
+| prompt and more detailed intro | 0.654           | 0.6       | 0.62                                   |
+| reorder the introduction       | 0.657           | 0.6       | 0.62                                   |
+
+However when making submissions the validation result did not correlate with leaderboard.
 
 ## Conclusion
+
+GPT4 is a very powerful LLM that can be used to guess the prompts and also to generate new content.
+It is more faithful to the instructions than Mixtral or Gemma.
+
+The correlation between current local validation score and public leaderboard is not perfect.
+
+### What are the main difficulties of the challenge?
+
+- The style of the prompts is unknown. A prompt could be abstract/generic or it could be detailed/specific and make reference
+to details of the original prompt. Many different prompts could create the same output.
+- Gemma does not always follow the instructions, I have seen GPT4 recovered prompts that describe
+  much better the change between the original and rewritten text than the original prompt
+- T5 embeddings can fail to measure the similarity of prompts
+- Guessing the prompt is a complex task that might require chain of thought
 
 ## Next steps
 

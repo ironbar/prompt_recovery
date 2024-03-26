@@ -61,9 +61,44 @@ The response of the prompt could be used later to fine-tune Mixtral to do some "
 
 ## Results
 
+### Evaluate GPT4 on rewritten supplementary data
+
+GPT4 only scores 0.7036 +- 0.014 on the rewritten supplementary material. My current best score is 0.724
+
+However if I look at GPT4 "errors" they are not errors at all:
+
+- Many times the prompt given by GPT4 is better than the original prompt, the problem is that Gemma does not follow the given instruction
+- The other big problem is that Gemma is not an [injective function](https://en.wikipedia.org/wiki/Injective_function), many different prompts can lead to the same answer. How to choose among the space of possible prompts? We could inject some
+bias if we know the style of the host.
+
+I judge that GPT4 answers are very good. I believe that a combination of GPT4 analysis and Gemma could lead to a very strong model.
+
+If I compare GPT4 answers with my previous best Mixtral prompt the similarity raises to 0.755.
+
+### Labeled supplementary data
+
+Using GPT4 I have been able to label the supplementary data. The responses from GPT4 look like this:
+
+```
+1. The rewritten text is more playful and engaging, using puns and a more enthusiastic tone.
+2. {"prompt": "Rewrite the memo to be more engaging and use aquatic puns."}
+```
+
+This could enable more powerful chain of thought fine-tuning.
+
+![gpt4_responses_token_length](res/gpt4_responses_token_length.png)
+
+The mean number of tokens is around 50, and the max is below 75. Thus we should be able to generate text of that length on submission.
+
 ## Conclusion
 
 ## Next steps
+
+- Add more examples to few shot prompting
+- Fine-tune Mixtral using the new data. I could use 3 different outputs:
+  1. Original Gemma output
+  2. Regenerated Gemma output with the recovered prompts
+  3. Generate new output with GPT4 (that will likely follow the instructions better)
 
 ## TODO
 
