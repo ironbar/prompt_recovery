@@ -92,6 +92,18 @@ The mean number of tokens is around 50, and the max is below 75. Thus we should 
 
 ## Conclusion
 
+GPT4 is a very powerful LLM that can be used to guess the prompts and also to generate new content.
+It is more faithful to the instructions than Mixtral or Gemma.
+
+### What are the main difficulties of the challenge?
+
+- The style of the prompts is unknown. A prompt could be abstract/generic or it could be detailed/specific and make reference
+to details of the original prompt. Many different prompts could create the same output.
+- Gemma does not always follow the instructions, I have seen GPT4 recovered prompts that describe
+  much better the change between the original and rewritten text than the original prompt
+- T5 embeddings can fail to measure the similarity of prompts
+- Guessing the prompt is a complex task that might require chain of thought
+
 ## Next steps
 
 - Add more examples to few shot prompting
