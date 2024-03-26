@@ -150,12 +150,16 @@ He has a lot of Kaggle code, these are some relevant notebooks:
 
 The few shot prompt is interesting because it shows a way to do it on Gemini, it is likely that Gemma will be similar.
 
-It has a [dataset](https://www.kaggle.com/datasets/databricks/databricks-dolly-15k) of instruction-following records
+It has a [dataset](https://www.kaggle.com/datasets/databricks/databricks-dolly-15k) of instruction-following records.
+
+**I could not find any additional information about the leak**
 
 ## Conclusion
 
 The task of guessing the prompt is not easy. For a non-native speaker like me, many times is difficult
 because some unknown words are used and I'm not able to describe the difference.
+
+I need to use GPT4 to guess the prompt on a following iteration.
 
 ## Next steps
 

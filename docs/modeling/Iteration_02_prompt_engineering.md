@@ -37,7 +37,7 @@ if we want to measure small improvements we need that evaluation time.
 
 I could use [Mistral API](https://docs.mistral.ai/platform/pricing/) to accelerate evaluation. Assuming
 that each request would use around 2500 input tokens, each dataset evaluation (around 300 samples) would
-cost 0.7$, so the total evaluation in 6 datasets would be likely less than 4$. If I make 5 requests per
+cost 0.7\$, so the total evaluation in 6 datasets would be likely less than 4\$. If I make 5 requests per
 second that would be around 6 minutes.
 
 ## Results
@@ -74,18 +74,24 @@ output tokens.
 
 After data cleaning I have carried more thorough optimization:
 
-| prompt variations               | gemma_suppl_rewrite | nbroad_v2 | newtonbaba | dipamc77 | alexxxsem | galileo | mean  |
-|---------------------------------|---------------------|-----------|------------|----------|-----------|---------|-------|
-| baseline                        | 0.698               | 0.609     | 0.672      | 0.634    | 0.574     | 0.647   | 0.639 |
-| add user and assistant names    | 0.694               | 0.606     | 0.656      | 0.61     | 0.572     | 0.632   | 0.628 |
-| more detailed intro             | 0.705               | 0.62      | 0.672      | 0.632    | 0.569     | 0.664   | 0.644 |
-| prompt instead of instruction   | 0.721               | 0.621     | 0.672      | 0.633    | 0.572     | 0.662   | 0.647 |
-| order instead of instruction    | 0.642               | 0.551     | 0.615      | 0.635    | 0.555     | 0.597   | 0.599 |
-| order instead of instruction v2 | 0.627               | 0.544     | 0.59       | 0.612    | 0.545     | 0.584   | 0.584 |
-| prompt and more detailed intro  | 0.717               | 0.623     | 0.679      | 0.65     | 0.581     | 0.674   | 0.654 |
+| prompt variations                                | gemma_suppl_rewrite | nbroad_v2 | newtonbaba | dipamc77 | alexxxsem | galileo | mean  |
+|--------------------------------------------------|---------------------|-----------|------------|----------|-----------|---------|-------|
+| few shot conversation                            | 0.698               | 0.609     | 0.672      | 0.634    | 0.574     | 0.647   | 0.639 |
+| add user and assistant names                     | 0.694               | 0.606     | 0.656      | 0.61     | 0.572     | 0.632   | 0.628 |
+| more detailed intro                              | 0.705               | 0.62      | 0.672      | 0.632    | 0.569     | 0.664   | 0.644 |
+| prompt instead of instruction                    | 0.721               | 0.621     | 0.672      | 0.633    | 0.572     | 0.662   | 0.647 |
+| order instead of instruction                     | 0.642               | 0.551     | 0.615      | 0.635    | 0.555     | 0.597   | 0.599 |
+| order instead of instruction v2                  | 0.627               | 0.544     | 0.59       | 0.612    | 0.545     | 0.584   | 0.584 |
+| prompt and more detailed intro                   | 0.717               | 0.623     | 0.679      | 0.65     | 0.581     | 0.674   | 0.654 |
+| Improve response start                           | 0.724               | 0.623     | 0.68       | 0.647    | 0.577     | 0.665   | 0.653 |
+| Original and rewrritten text in a single message | 0.711               | 0.622     | 0.675      | 0.615    | 0.572     | 0.651   | 0.641 |
+| chatgpt intro                                    | 0.713               | 0.627     | 0.671      | 0.635    | 0.579     | 0.67    | 0.649 |
+| reorder the introduction                         | 0.719               | 0.627     | 0.68       | 0.65     | 0.587     | 0.676   | 0.657 |
 
 By adding a more detailed intro (better definition of the task) and replacing the word "instruction" by
-"text prompt" I was able to improve the mean scs score from 0.639 to 0.654.
+"text prompt" I was able to improve the mean scs score from `0.639` to `0.657`.
+
+TODO: add submission results
 
 ## Conclusion
 
