@@ -21,7 +21,23 @@ As train data I will use the supplementary material labelled with GPT4 that was 
 
 ## Development
 
+### System prompt
+
+Maybe if we give some information previously to the `[INST]` prompt that would be equivalent
+to the system prompt in ChatGPT. Seen on this [dataset](https://huggingface.co/datasets/gathnex/Gath_baize?row=0)
+
+However in this other thread they use multi-turn conversation instead: <https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1/discussions/41>
+
+### Generation not ending after fine-tuning
+
+My hypothesis is that I'm using PAD token equal to EOS token. I believe it does not give attention weight
+to the EOS token and that results in the problem.
+
+The solution would be to add a new pad token, or to use the unknown token as pad.
+
 ## Results
+
+I have learned to fine-tune Mixtral, but what data should I train on?
 
 ## Conclusion
 
