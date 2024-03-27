@@ -121,7 +121,8 @@ I have learned to fine-tune Mixtral, but what data should I train on?
 ## Next steps
 
 - Try different combinations of output data and styles
+- Should I learn to merge the adapter and the model?
 
 ## TODO
 
-- [ ]
+- [ ] Why the model with LORA is non-deterministic? Dropout?
