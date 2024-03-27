@@ -105,7 +105,7 @@ By using prompt engineering we were able to improve the leaderboard score from 0
 to use the trick of adding `Improve the text to this` to the submission, which highlights the importance
 of imitating the style of the host's prompts.
 
-The correlation between current local validation score and public leaderboard is not perfect.
+The correlation between current local validation score and public leaderboard is not perfect. However it might be the case that it is simply the uncertainty of the evaluation, that I believe is close to 0.02 for the public leaderboard.
 
 ## Next steps
 
