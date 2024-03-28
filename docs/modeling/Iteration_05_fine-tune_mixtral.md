@@ -114,9 +114,22 @@ v1
 
 ## Results
 
-I have learned to fine-tune Mixtral, but what data should I train on?
+The table below shows the similarity with gemma prompt of the baseline and fine-tuned models.
+
+| ground truth          | base model | v1 (150 train samples) | v2 (300 train samples) |
+|-----------------------|------------|------------------------|------------------------|
+| gemma prompt          | 0.6742     | 0.7095                 | 0.7062                 |
+| gpt4 recovered prompt | 0.7005     | 0.8108                 | 0.8126                 |
+
+- Both fine-tuned models improve over the baseline model, which probes that fine-tuning works
+- The similarity with gpt4 increases 0.11, while the similarity with gemma prompt increases just 0.04.
+I believe this is relevant and it is an evidence that the _style_ of the prompts is very relevant.
+- The fine-tuned model is slower, submission takes 7 hours instead of 4. I believe this is solvable
+  by merging the model and lora but I haven't done it yet.
 
 ## Conclusion
+
+I have learned to fine-tune Mixtral, but what data should I train on?
 
 ## Next steps
 
