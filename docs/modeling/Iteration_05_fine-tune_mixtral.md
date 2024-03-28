@@ -127,15 +127,21 @@ I believe this is relevant and it is an evidence that the _style_ of the prompts
 - The fine-tuned model is slower, submission takes 7 hours instead of 4. I believe this is solvable
   by merging the model and lora but I haven't done it yet.
 
+On leaderboard these models perform similar to prompt engineering. Both models get 0.61 alone and
+they improve to 0.62 and 0.63 when adding `Improve the text to this`.
+
 ## Conclusion
 
-I have learned to fine-tune Mixtral, but what data should I train on?
+We have learned to fine-tune Mixtral, we have another tool for the challenge. Fine-tuned model learns
+to imitate the task, but what data should I train on?
 
 ## Next steps
 
 - Try different combinations of output data and styles
-- Should I learn to merge the adapter and the model?
+- Should I learn to merge the adapter and the model? That would speedup submission.
+- Would it have sense to generate multiple prompts and use perplexity to select among them?
+- Are there any other tricks like `Improve the text to this`?
 
 ## TODO
 
-- [ ] Why the model with LORA is non-deterministic? Dropout?
+- [x] Why the model with LORA is non-deterministic? Dropout
