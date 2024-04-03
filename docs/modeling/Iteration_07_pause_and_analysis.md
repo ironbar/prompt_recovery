@@ -26,7 +26,12 @@ analyze all the work done and think of ways to advance in the challenge.
   reveals the given prompt in the response.
 - When evaluating prompt variations created by GPT4 that preserved the original meaning the score was always above `0.70`
 - Many different prompts can lead to the same response. A prompt can be generic or detailed an produce the same result.
-- 
+
+## Why a simple baseline is beating _intelligent_ LLMs?
+
+- Ambiguity of the task. If a generic prompt was used and a specific prompt is predicted the similarity will be low.
+- The model is not guessing the prompt correctly. However on validation I get good scores, so this would
+  imply that the test dataset is much harder than my validation datasets.
 
 ## Motivation
 
@@ -34,16 +39,28 @@ analyze all the work done and think of ways to advance in the challenge.
 
 ## Results
 
+I need actionable insights!!!
+
 ## Conclusion
 
 ## Next steps
 
-- What if I just focus on building the best possible model and praise for the shakeup?
+My hunch is that the best solution is a fine-tuned Mixtral on the right data.
+
+- What if I just fork the Mistral notebook and replace the model by Mixtral?
+- Analyze the few-shot prompt examples with GPT4
 - What if I request Mixtral to only answer when it is very sure and the prompt is evident? (Play safe)
+- What if I just focus on building the best possible model and praise for the shakeup?
+- Try again with perplexity/model inversion. But the problem is that the output has likely been post-processed.
 - I could do more experiments on few-shot prompting, f.e. selecting random samples from a dataset
-- Analize the few-shot prompt examples with GPT4
 - Could I run some mean-prompt optimization using GPT4? I have read that some people have done that but does not transfer well to LB.
-- Try again with perplexity/model inversion. But the problem is that the output has likely been postprocessed.
+
+### Option 1. Create a high quality hard dataset
+
+The samples need to have sense, but at the same time be hard with my current best model.
+Then fine-tune a model on another dataset and measure the improvement.
+
+This would work if we are failing on LB because the test set is hard.
 
 ## TODO
 
