@@ -81,6 +81,14 @@ for few shot prompting.
 - There is a great variability in LB score: from 0.51 to 0.62
 - How is it possible that most of the evaluations are below the simple baseline of `Improve the text to this.`
 
+#### Analysis of the prompts by GPT4
+
+GPT4 says that the most diverse prompts are from Newtonbaba, but it is not sure about the other datasets.
+From my point of view I don't see a clear pattern or differences between the prompts.
+
+- <https://chat.openai.com/c/e92c50d3-079a-42ba-b844-a438d2a3531d>
+- <https://chat.openai.com/c/ee12f003-7485-4ba8-b684-b2094ffa4a96>
+
 ### Understanding the effect of sharpening the similarity
 
 <https://www.kaggle.com/code/ironbar/understanding-the-effect-of-sharpening>
