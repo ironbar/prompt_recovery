@@ -25,7 +25,7 @@ the characteristics of the metric --->
 So they compute the cosine similarity of the embedding of the ground truth and the prediction, and that
 value is elevated to 3. We have to maximize the similarity between the predictions and the ground truth.
 
-In the forum it has been said that T5 is not a good model.
+In the forum it has been said that [st5-base](https://www.kaggle.com/models/google/sentence-t5/frameworks/tensorFlow2/variations/st5-base) is not a good model.
 
 ## Assess situation
 
@@ -67,10 +67,10 @@ size of model.
 - **PEFT**: Parameter efficient fine-tuning
 - [Prefix tuning](https://huggingface.co/docs/peft/en/package_reference/prefix_tuning#:~:text=Prefix%20tuning%20prefixes%20a%20series,all%20of%20the%20model%20layers.): Prefix tuning prefixes a series of task-specific vectors to the input sequence that can be learned while keeping the pretrained model frozen. The prefix parameters are inserted in all of the model layers.
 - Special tokens:
-  - **EOS**. End of sentence.
-  - **UNK**. Unknown token
-  - **PAD**. Add this token to have all the inputs in the batch with the same length.
-  - **BOS**. Begin of sentence
+    - **EOS**. End of sentence.
+    - **UNK**. Unknown token
+    - **PAD**. Add this token to have all the inputs in the batch with the same length.
+    - **BOS**. Begin of sentence
 
 ## Questions
 

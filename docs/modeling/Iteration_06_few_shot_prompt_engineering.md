@@ -40,7 +40,7 @@ I have created a notebook that:
 
 Let's see what can we learn from the public mean prompts.
 
-https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/488150
+<https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/488150>
 
 Some of the prompts are really long. The first one is 78 tokens according to OpenAI. Maybe that is one
 way of decreasing the uncertainty on the predictions. I could rephrase the prompt in different ways, give different levels of details of the prompt...
