@@ -115,12 +115,39 @@ If `Improve the text to this.` is scoring `0.60` and a naive Mixtral model score
 
 Creating prompt variations was a difficult task. Distilling all the changes into a prompt is not an easy task.
 
-TODO:
+| experiment            | LB score |
+|-----------------------|----------|
+| baseline              | 0.60     |
+| always use "text"     | 0.60     |
+| improve the text      | 0.60     |
+| shorter prompts       | 0.61     |
+| abstract prompt       | 0.61     |
+| specific prompts      | 0.6      |
+| gemini_synonym_prompt | 0.6      |
+| gpt3.5_synonym_prompt | 0.57     |
+| specific + abstract   | 0.61     |
+
+I have tried many prompt variations and the LB score barely changed. It thus seems that the prompt
+style is not important, but to capture the intent of the ground truth prompt.
+
+### Forking public Mistral notebook
+
+A [public notebook](https://www.kaggle.com/code/richolson/mistral-7b-prompt-recovery-version-2) was published
+that used Mistral 7B and few-shot prompting and achieved a LB score of `0.62`.
+
+I thought that replacing Mistral by Mixtral will result in improvements but that was not the case. The score
+was exactly the same. That is weird because in the benchmarks Mixtral is much better.
 
 ## Conclusion
+
+There are many learnings from this iteration:
+
+- It seems that the style of the prompts is not important.
+- The number of examples in few-shot prompting is not correlated with LB score
+- Changing the examples in few-shot prompting can have a big effect on LB score
 
 ## Next steps
 
 ## TODO
 
-- [ ] What if I choose a set of samples, and rewrite the prompts with different styles and make submissions? More abstract, more generic, longer or shorter, text or story...
+- [x] What if I choose a set of samples, and rewrite the prompts with different styles and make submissions? More abstract, more generic, longer or shorter, text or story...

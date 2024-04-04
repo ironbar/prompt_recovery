@@ -13,7 +13,7 @@ analyze all the work done and think of ways to advance in the challenge.
   submissions with a big model like Mixtral score below that.
 - Some teams have been able to consistently and  iteratively improve their score on the LB. They have slowly climbed up to `0.70`.
 - The uncertainty of the LB score is around `0.02`
-- It has not been confirmed that the split of the test set is random.
+- The [host has confirmed](https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/477160#2733868) that the test set splits are random.
 - By adding `Improve the text to this.` to the predictions of Mixtral I have seen consistent improvements of `0.02` in LB score, from `0.61` to `0.63`.
 - On local validation I have been able to reach a score of `0.81` when training and evaluating on prompts recovered by GPT4.
 - When trying different datasets for few-shot prompt I have observed great variability on LB scores:
@@ -26,6 +26,7 @@ analyze all the work done and think of ways to advance in the challenge.
   reveals the given prompt in the response.
 - When evaluating prompt variations created by GPT4 that preserved the original meaning the score was always above `0.70`
 - Many different prompts can lead to the same response. A prompt can be generic or detailed an produce the same result.
+- It seems that the style of the prompt is not relevant. I have done many prompt variations with few-shot prompting getting almost no variation on LB score.
 
 ## Why a simple baseline is beating _intelligent_ LLMs?
 
