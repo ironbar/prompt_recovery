@@ -66,6 +66,15 @@ GPT4 will use them to generate the original text.
 
 Since the texts will be short this won't cost too much money to generate a small dataset.
 
+Asking for less than 200 words creates text of around 100 words, which is 150 tokens. I believe that is
+long enough to be expressive and at the same time allow faster train.
+
+With ChatGPT it works really well. The temperature it is said to be 0.7 or 1.
+
+My vision is to create a dataframe with the prompts that will be used to generate the dataset. To enable
+for greater flexibility I will allow to use placeholders in the prompts and those will be replaced
+with different options when creating the dataset.
+
 ```
 Given the following text prompt your task is to:
 
@@ -135,6 +144,11 @@ Copy code
 
 ```
 
+### OpenAI tokenizer is similar to Mixtral
+
+I have verified that I can use [OpenAI's tokenizer](https://platform.openai.com/tokenizer) as a good estimator of the tokens that will create Mixtral.
+
+<https://www.kaggle.com/code/ironbar/mixtral-tokenizer-analysis?scriptVersionId=170444326>
 
 ## Results
 
@@ -152,4 +166,5 @@ scoring samples and if I believe they are good enough add them to the train data
 
 ## TODO
 
-- [ ] Generate more data with Gemini or Gemma
+- [ ] Generate more data with Gemini or Gemma. Once I have the original text and the prompt I can use any model to generate more data.
+- [x] Is the Mixtral tokenizer similar to OpenAI's?
