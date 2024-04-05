@@ -48,7 +48,7 @@ I need actionable insights!!!
 
 My hunch is that the best solution is a fine-tuned Mixtral on the right data.
 
-- [ ] What if I just fork the Mistral notebook and replace the model by Mixtral?
+- [x] What if I just fork the Mistral notebook and replace the model by Mixtral?
 - [x] Analyze the few-shot prompt examples with GPT4
 - What if I request Mixtral to only answer when it is very sure and the prompt is evident? (Play safe)
 - What if I just focus on building the best possible model and praise for the shakeup?
