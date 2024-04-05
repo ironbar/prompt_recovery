@@ -168,3 +168,5 @@ scoring samples and if I believe they are good enough add them to the train data
 
 - [ ] Generate more data with Gemini or Gemma. Once I have the original text and the prompt I can use any model to generate more data.
 - [x] Is the Mixtral tokenizer similar to OpenAI's?
+- [ ] Combine multiple prompts in one. F.e. rewrite the text adding dragons and with a more humorous tone.
+- [ ] Merge model and adapter using public notebook as reference
