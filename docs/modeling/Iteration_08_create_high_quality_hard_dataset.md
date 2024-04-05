@@ -75,28 +75,12 @@ My vision is to create a dataframe with the prompts that will be used to generat
 for greater flexibility I will allow to use placeholders in the prompts and those will be replaced
 with different options when creating the dataset.
 
-```
+```python
+prompt_template = """
 Given the following text prompt your task is to:
 
-1. Write a short text that could have sense to be modified with the given text prompt. The number of words should be less than 100.
-2. Rewrite the text using the given text prompt. 
-
-## Text prompt
-
-Rewrite the story adding dragons
-ChatGPT
-Original Short Text
-In a distant kingdom, a young knight sets out on a quest to find the legendary golden apple, a treasure believed to bring eternal youth to its possessor. The journey leads through perilous forests, over towering mountains, and across vast deserts. Along the way, the knight faces various challenges, including fierce beasts, treacherous paths, and puzzles left by the guardians of the apple.
-
-Rewritten Text with Dragons
-In a distant kingdom, a young knight sets out on a quest to find the legendary golden apple, a treasure believed to bring eternal youth to its possessor. The journey leads through perilous forests, home to wise but wary dragons, over towering mountains guarded by dragonkind, and across vast deserts where dragons soar under the scorching sun. Along the way, the knight faces various challenges, including fierce dragons, treacherous paths, and riddles posed by the dragon guardians of the apple.
-```
-
-```
-Given the following text prompt your task is to:
-
-1. Write a short text that could have sense to be modified with the given text prompt. The number of words should be less than 100.
-2. Rewrite the text using the given text prompt. 
+1. Write a short text that could have sense to be modified with the given text prompt. The number of words should be less than 200.
+2. Rewrite the text using the given text prompt.
 
 The output should be in json, with the following format:
 
@@ -104,44 +88,8 @@ The output should be in json, with the following format:
 
 ## Text prompt
 
-Rewrite the story as if it's being narrated by God
-ChatGPT
-json
-Copy code
-{
-  "original_text": "The town was small, nestled between two rolling hills. People went about their daily routines, largely unaware of the outside world. A little girl, curious and bright, wandered off into the woods, drawn by the promise of adventure and the mystery of the unknown.",
-  "rewritten_text": "Behold the town I have placed between two rolling hills, a testament to the simplicity and beauty of creation. My children there live in harmony, their lives a tapestry of daily rituals, untouched by the chaos of the outside world. Among them, a little girl, a spark of curiosity and brilliance I instilled in her, felt the call of the woods. Guided by My hand, she ventured forth, seeking the adventures and mysteries I laid out before her."
-}
-```
-
-```
-Given the following text prompt your task is to:
-
-1. Write a short text that could have sense to be modified with the given text prompt. The number of words should be less than 100.
-2. Rewrite the text using the given text prompt. 
-
-The output should be in json, with the following format:
-
-{"original_text": "...", "rewritten_text": "..."}
-
-## Text prompt
-
-"""Rewrite the python function to be more readable"""
-
-3 / 3
-
-ChatGPT
-json
-Copy code
-{
-  "original_text": "def calc(d): return d[0]+d[1] if len(d) > 1 else d[0]*2",
-  "rewritten_text": "def calculate_sum_or_double(values):\n    if len(values) > 1:\n        return values[0] + values[1]\n    else:\n        return values[0] * 2"
-}
-
-
-
-
-
+```{prompt}```
+"""
 ```
 
 ### OpenAI tokenizer is similar to Mixtral
@@ -158,7 +106,7 @@ Does it have sense to have a validation dataset anymore? Or is it better to simp
 for training?
 
 Once I have created and trained on my own data, I could evaluate the model on public data. Then review the top
-scoring samples and if I believe they are good enough add them to the train dataset. 
+scoring samples and if I believe they are good enough add them to the train dataset.
 
 ## Next steps
 
@@ -170,3 +118,4 @@ scoring samples and if I believe they are good enough add them to the train data
 - [x] Is the Mixtral tokenizer similar to OpenAI's?
 - [ ] Combine multiple prompts in one. F.e. rewrite the text adding dragons and with a more humorous tone.
 - [ ] Merge model and adapter using public notebook as reference
+- [ ] Read about fine-tuning model in question answering datasets and how to adjust the loss just on the answers
