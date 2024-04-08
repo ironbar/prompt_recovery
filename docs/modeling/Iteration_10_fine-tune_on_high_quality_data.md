@@ -48,3 +48,4 @@ is achieved faster.
   - [ ] https://github.com/vllm-project/vllm/issues/2243
   - [ ] I could try this on the forum fork
 - [ ] What if I make multiple predictions with the same model and concatenate them? Or with different adapters?
+- <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
