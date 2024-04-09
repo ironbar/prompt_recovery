@@ -77,9 +77,14 @@ The two experiments run so far show an improvement when making multiple predicti
   - [ ] https://github.com/mobiusml/hqq/issues/2
   - [ ] https://github.com/vllm-project/vllm/issues/2243
   - [ ] I could try this on the forum fork
+  - [ ] Here we see again the Mixtral gates suggestion, although it is not the bit and bytes config.
+  - [ ] https://huggingface.co/docs/transformers/main_classes/quantization#transformers.QuantoConfig.modules_to_not_convert
+  - [ ] https://huggingface.co/docs/transformers/main_classes/quantization#transformers.BitsAndBytesConfig
+  - [ ] llm_int8_skip_modules might be used
 - [x] What if I make multiple predictions with the same model and concatenate them?
 - [ ] Or with different adapters?
 - <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
 - [ ] Create new data with Newtonbaba?
 - [ ] Evaluate new dataset
 - [ ] New data with multiple prompt instructions.
+
