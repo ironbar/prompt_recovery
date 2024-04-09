@@ -37,6 +37,36 @@ training it was around 6.
 Thus we see an improvement on validation score and also the trainings are faster because the best epoch
 is achieved faster.
 
+### First trainings on new data
+
+| version | loss        | output type | data                                                                                        | LB score |
+|---------|-------------|-------------|---------------------------------------------------------------------------------------------|----------|
+| 1       | Full        | CoT         | 1/2 mooney_test_with_gpt4                                                                   | 0.61     |
+| 2       | Full        | CoT         | mooney_test_with_gpt4                                                                       | 0.61     |
+| 3       | Completions | CoT         | mooney_test_with_gpt4                                                                       | 0.61     |
+| 4       | Completions | Prompt      | high_quality_dataset_v1                                                                     | 0.59     |
+| 5       | Completions | Prompt      | high_quality_dataset_v1,<br>mooney_test_with_gpt4                                           | **0.62** |
+| 6       | Completions | Prompt      | high_quality_dataset_v1,<br>mooney_test_with_gpt4,<br>gemma_suppl_rewrite_curated_with_gpt4 | 0.61     |
+
+- v5 model reaches the best LB score so far for any individual model (without any mean prompt combination)
+- This probes that chain of thought (CoT) prompts were not necessary. It seemed like a good idea, but in hindsight
+  we were just saying the same in the thoughts and in the prompt.
+- It might be possible that we need more that if we train on completions and just prompts, because the number of tokens
+  that are used for training is much smaller.
+
+### Submission with multiprompt
+
+Since the model is just predicting a short prompt the submission is much faster. It runs in less than 3 hours.
+Thus it is possible to make more than one prediction for each sample and concatenate all together.
+
+| model version | single prompt LB score | multiprompt LB score |
+|---------------|------------------------|----------------------|
+| 4             | 0.59                   | 0.61                 |
+| 5             | 0.62                   | ?                    |
+| 6             | 0.61                   | 0.62                 |
+
+The two experiments run so far show an improvement when making multiple predictions.
+
 ## Conclusion
 
 ## Next steps
@@ -47,5 +77,9 @@ is achieved faster.
   - [ ] https://github.com/mobiusml/hqq/issues/2
   - [ ] https://github.com/vllm-project/vllm/issues/2243
   - [ ] I could try this on the forum fork
-- [ ] What if I make multiple predictions with the same model and concatenate them? Or with different adapters?
+- [x] What if I make multiple predictions with the same model and concatenate them?
+- [ ] Or with different adapters?
 - <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
+- [ ] Create new data with Newtonbaba?
+- [ ] Evaluate new dataset
+- [ ] New data with multiple prompt instructions.
