@@ -67,24 +67,42 @@ Thus it is possible to make more than one prediction for each sample and concate
 
 The two experiments run so far show an improvement when making multiple predictions.
 
+### Do not quantize Mixtral gates
+
+I have read that quantizing Mixtral gates could be problematic. Thus I have created a notebook to see if I can avoid that quantization.
+
+If we don't quantize the gates and the lm_head of Mixtral the memory usage is almost the same since they are small layers.
+
+Just add `llm_int8_skip_modules=['gate', 'lm_head'],` to the configuration.
+
+References:
+
+- <https://huggingface.co/docs/transformers/main_classes/quantization#transformers.QuantoConfig.modules_to_not_convert>
+- <https://github.com/mobiusml/hqq/issues/2>
+
+To see the effect of this change I have launched two experiments:
+
+1. Fine-tune a model without quantizing those layers
+2. Resubmit the fork from the forum where I replaced Mistral by Mixtral.
+
+### What if I fine-tune Mistral?
+
+Validation loss during training is slightly higher: 0.7679 vs 0.7456
+
+https://www.kaggle.com/datasets/ahmadsaladin/mistral-7b-it-v02
+
 ## Conclusion
 
 ## Next steps
 
 ## TODO
 
-- [ ] What if MoE does not deal correctly with quantization and should I leave some layers as they are?
-  - [ ] https://github.com/mobiusml/hqq/issues/2
-  - [ ] https://github.com/vllm-project/vllm/issues/2243
-  - [ ] I could try this on the forum fork
-  - [ ] Here we see again the Mixtral gates suggestion, although it is not the bit and bytes config.
-  - [ ] https://huggingface.co/docs/transformers/main_classes/quantization#transformers.QuantoConfig.modules_to_not_convert
-  - [ ] https://huggingface.co/docs/transformers/main_classes/quantization#transformers.BitsAndBytesConfig
-  - [ ] llm_int8_skip_modules might be used
+- [x] What if MoE does not deal correctly with quantization and should I leave some layers as they are?
 - [x] What if I make multiple predictions with the same model and concatenate them?
 - [ ] Or with different adapters?
 - <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
 - [ ] Create new data with Newtonbaba?
 - [ ] Evaluate new dataset
 - [ ] New data with multiple prompt instructions.
-
+- [ ] What if I fine-tune Mistral instead of Mixtral?
+  - [ ] https://www.kaggle.com/datasets/ahmadsaladin/mistral-7b-it-v02
