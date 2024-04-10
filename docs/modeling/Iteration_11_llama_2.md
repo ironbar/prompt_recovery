@@ -35,6 +35,35 @@ A simpler solution is to do `model.config.pretraining_tp = 1` after loading the 
 
 Reference: <https://discuss.huggingface.co/t/llama2-finetuning-giving-error-mat1-and-mat2-shapes-cannot-be-multiplied-4096x5120-and-1x2560/47466/7>
 
+### Llama 2 references
+
+The [prompt format](https://huggingface.co/blog/llama2#how-to-prompt-llama-2) is very similar to Mistral, with the addition of the system prompt.
+
+For one way conversations:
+
+```
+<s>[INST] <<SYS>>
+{{ system_prompt }}
+<</SYS>>
+
+{{ user_message }} [/INST]
+```
+
+For multi-turn conversations:
+
+```
+<s>[INST] <<SYS>>
+{{ system_prompt }}
+<</SYS>>
+
+{{ user_msg_1 }} [/INST] {{ model_answer_1 }} </s><s>[INST] {{ user_msg_2 }} [/INST]
+
+```
+
+- <https://www.kaggle.com/models/metaresearch/llama-2/PyTorch/13b-chat-hf>
+- <https://replicate.com/blog/how-to-prompt-llama>
+- <https://huggingface.co/docs/transformers/en/model_doc/llama2>
+
 ## Results
 
 ### Forum notebook for with Llama
