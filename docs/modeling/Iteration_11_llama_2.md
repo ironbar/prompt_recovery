@@ -89,6 +89,8 @@ https://colab.research.google.com/drive/1SYpgFpcmtIUzdE7pxqknrM4ArCASfkFQ?usp=sh
 
 This other example uses a learning rate of 1e-4.
 
+The validation result is the same with a learning rate of 2e-5 and 4e-5.
+
 ## Conclusion
 
 ## Next steps
@@ -99,6 +101,7 @@ This other example uses a learning rate of 1e-4.
     - Gemma 7b
     - Phi-2
 - I might the tune the lora hyperparameters, but maybe on Mistral 7B to be faster.
+- Create a python training script so I can run multiple trainings at night
 
 ## TODO
 
