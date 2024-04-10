@@ -62,10 +62,11 @@ Thus it is possible to make more than one prediction for each sample and concate
 | model version | single prompt LB score | multiprompt LB score |
 |---------------|------------------------|----------------------|
 | 4             | 0.59                   | 0.61                 |
-| 5             | 0.62                   | ?                    |
+| 5             | 0.62                   | 0.64                 |
 | 6             | 0.61                   | 0.62                 |
 
-The two experiments run so far show an improvement when making multiple predictions.
+All the experiments improve when making multiple predictions. 0.64 is the best result so far with a single model.
+This could be a way, but I'm far from 0.70.
 
 ### Do not quantize Mixtral gates
 
@@ -85,24 +86,33 @@ To see the effect of this change I have launched two experiments:
 1. Fine-tune a model without quantizing those layers
 2. Resubmit the fork from the forum where I replaced Mistral by Mixtral.
 
+The results on leaderboard do not change. The fine-tuned model gets 0.61 and the fork gets 0.62, exactly as before.
+
 ### What if I fine-tune Mistral?
 
 Validation loss during training is slightly higher: 0.7679 vs 0.7456
 
 https://www.kaggle.com/datasets/ahmadsaladin/mistral-7b-it-v02
 
+However in LB score I get exactly the same score as Mixtral: 0.61
+
+This is the second evidence against the use of Mixtral, the first one was the [forum notebook](https://www.kaggle.com/code/ironbar/mixtral-prompt-predict-fork?scriptVersionId=171120108) where I simply replaced Mistral
+by Mixtral and got the same score.
+
 ## Conclusion
 
 ## Next steps
+
+- [ ] Try using LLama 2 13B, https://www.kaggle.com/models/metaresearch/llama-2/pyTorch/13b-chat-hf
+- [ ] Why Mixtral is not getting better results than Mistral?
 
 ## TODO
 
 - [x] What if MoE does not deal correctly with quantization and should I leave some layers as they are?
 - [x] What if I make multiple predictions with the same model and concatenate them?
-- [ ] Or with different adapters?
-- <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
-- [ ] Create new data with Newtonbaba?
+  - [ ] Or with different adapters?
+- [ ] Upload new models to: <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
+- [x] Create new data with Newtonbaba? The prompts didn't look right
 - [ ] Evaluate new dataset
 - [ ] New data with multiple prompt instructions.
-- [ ] What if I fine-tune Mistral instead of Mixtral?
-  - [ ] https://www.kaggle.com/datasets/ahmadsaladin/mistral-7b-it-v02
+- [x] What if I fine-tune Mistral instead of Mixtral?
