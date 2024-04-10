@@ -14,9 +14,10 @@ Can we get better results if we switch from Mistral to Llama 2?
 ## Motivation
 
 My initial model choice for the challenge was to use Mixtral because it was the
-biggest and most capable model that could make a submission for the challenge.
+biggest and most capable model that could be used to make a submission for the challenge.
 
-However I have no found evidences that Mixtral is better than Mistral for this challenge.
+However I haven't found evidences that Mixtral is better than Mistral for this challenge. Two different
+experiments gave the same results to Mistral 7B and Mixtral 8x7B. Maybe the
 
 Thus I have decided to try with LLama 2 13b chat because it might give better results.
 
@@ -68,7 +69,7 @@ For multi-turn conversations:
 
 ### Forum notebook for with Llama
 
-TODO
+[Notebook](https://www.kaggle.com/code/ironbar/llama-13b-prompt-predict-fork?scriptVersionId=171288400)
 
 ### Fine-tune Llama
 
@@ -76,9 +77,28 @@ Let's fine-tune Llama and compare to Mistral and Mixtral.
 
 I would like to do 2 trainings, one with sys prompt and another without. My guess is that the results will be very similar.
 
+TODO: which are the recommended parameters for fine-tuning this model? They might be different than Mistral.
+
+#### Fine-tuning parameters
+
+https://colab.research.google.com/drive/1PEQyJO1-f6j0S_XJ8DV50NkpzasXkrzd?usp=sharing
+
+This example uses a learning rate of 2e-4, which is 10 times bigger than 2e-5 used for Mixtral.
+
+https://colab.research.google.com/drive/1SYpgFpcmtIUzdE7pxqknrM4ArCASfkFQ?usp=sharing
+
+This other example uses a learning rate of 1e-4.
+
 ## Conclusion
 
 ## Next steps
+
+- Other models
+    - https://www.databricks.com/blog/mpt-30b
+    - Falcon 40b
+    - Gemma 7b
+    - Phi-2
+- I might the tune the lora hyperparameters, but maybe on Mistral 7B to be faster.
 
 ## TODO
 
