@@ -17,9 +17,9 @@ My initial model choice for the challenge was to use Mixtral because it was the
 biggest and most capable model that could be used to make a submission for the challenge.
 
 However I haven't found evidences that Mixtral is better than Mistral for this challenge. Two different
-experiments gave the same results to Mistral 7B and Mixtral 8x7B. Maybe the
+experiments gave the same results to Mistral 7B and Mixtral 8x7B. Maybe the MoE is difficult to fine-tune.
 
-Thus I have decided to try with LLama 2 13b chat because it might give better results.
+Thus I have decided to try with Llama 2 13b chat because it might give better results.
 
 ## Development
 
@@ -71,7 +71,7 @@ For multi-turn conversations:
 
 [Notebook](https://www.kaggle.com/code/ironbar/llama-13b-prompt-predict-fork?scriptVersionId=171288400)
 
-I get the same 0.62 score as with Mistral and Mixtral, so it seems that the model is not relevant?
+I get the same 0.62 score as with Mistral and Mixtral, maybe the model is not relevant...
 
 ### Fine-tune Llama
 
@@ -99,6 +99,9 @@ The validation result is the same with a learning rate of 2e-5 and 4e-5.
 
 ## Conclusion
 
+We do not get better results with Llama. So far it seems that the chosen LLM is irrelevant. I have
+to try with more models like Phi-2 and Gemma.
+
 ## Next steps
 
 - Other models
@@ -108,7 +111,3 @@ The validation result is the same with a learning rate of 2e-5 and 4e-5.
     - Phi-2. https://www.kaggle.com/models/Microsoft/phi/Transformers/2
 - I might the tune the lora hyperparameters, but maybe on Mistral 7B to be faster.
 - Create a python training script so I can run multiple trainings at night
-
-## TODO
-
-- [ ]

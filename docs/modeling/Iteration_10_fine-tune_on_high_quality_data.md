@@ -99,7 +99,29 @@ However in LB score I get exactly the same score as Mixtral: 0.61
 This is the second evidence against the use of Mixtral, the first one was the [forum notebook](https://www.kaggle.com/code/ironbar/mixtral-prompt-predict-fork?scriptVersionId=171120108) where I simply replaced Mistral
 by Mixtral and got the same score.
 
-## Conclusion
+### Reducing LoRA size on Mistral
+
+| lora_r | best_val_loss | model_slug | LB   |
+|--------|---------------|------------|------|
+| 16     | 0.6143        | mistral_v2 | 0.62 |
+| 8      | 0.6234        |            |      |
+| 4      | 0.6128        |            |      |
+| 2      | 0.6128        |            |      |
+| 1      | 0.5916        | mistral_v3 | 0.62 |
+
+- The size of the weights decreases from 54.6 to 3.4 MB
+- Maybe the task is easy, so we are just learning some kind of "good prompt"
+- Maybe with bigger datasets the r becomes relevant
+
+### Combination of transformers
+
+TODO:
+
+## Conclusions
+
+TODO: how much have I improved the LB score?
+
+- There is no evidence that Mixtral gives better results for this task
 
 ## Next steps
 
@@ -110,7 +132,7 @@ by Mixtral and got the same score.
 
 - [x] What if MoE does not deal correctly with quantization and should I leave some layers as they are?
 - [x] What if I make multiple predictions with the same model and concatenate them?
-  - [ ] Or with different adapters?
+  - [x] Or with different adapters?
 - [ ] Upload new models to: <https://www.kaggle.com/models/ironbar/mixtral-prompt-recovery>
 - [x] Create new data with Newtonbaba? The prompts didn't look right
 - [ ] Evaluate new dataset

@@ -37,6 +37,8 @@ This is a continuation of iterations 8 and 10, but focusing on Mistral and the d
 - I'm going to train in all the datasets and see what is the leaderboard and validation score. If I group
   the datasets by creator that would be 8 experiments.
 
+### Wandb
+
 ## Results
 
 ## Conclusion
