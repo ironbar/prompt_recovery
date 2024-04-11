@@ -27,3 +27,4 @@ This is a continuation of iterations 8 and 10, but focusing on Mistral and the d
 - [ ] Is there any useful public dataset that I can use directly? Measure text length and prompt diversity.
 - [ ] Collect useful prompts from other datasets
 - [ ] Generate samples with multi-instruction prompts (similar to leaked data)
+- [ ] Gain more control over wandb for easier inspection
