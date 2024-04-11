@@ -82,6 +82,9 @@ I would like to do 2 trainings, one with sys prompt and another without. My gues
 The LB score is 0.61, same as Mixtral but lower than Mistral (0.62) althought the differences are not
 likely to be significative.
 
+I have started training with system prompt, but after 200 steps the loss was almost identical to using Mistral prompt
+so I have decided to stop the training.
+
 #### Fine-tuning parameters
 
 https://colab.research.google.com/drive/1PEQyJO1-f6j0S_XJ8DV50NkpzasXkrzd?usp=sharing
