@@ -71,13 +71,16 @@ For multi-turn conversations:
 
 [Notebook](https://www.kaggle.com/code/ironbar/llama-13b-prompt-predict-fork?scriptVersionId=171288400)
 
+I get the same 0.62 score as with Mistral and Mixtral, so it seems that the model is not relevant?
+
 ### Fine-tune Llama
 
 Let's fine-tune Llama and compare to Mistral and Mixtral.
 
 I would like to do 2 trainings, one with sys prompt and another without. My guess is that the results will be very similar.
 
-TODO: which are the recommended parameters for fine-tuning this model? They might be different than Mistral.
+The LB score is 0.61, same as Mixtral but lower than Mistral (0.62) althought the differences are not
+likely to be significative.
 
 #### Fine-tuning parameters
 
@@ -98,8 +101,8 @@ The validation result is the same with a learning rate of 2e-5 and 4e-5.
 - Other models
     - https://www.databricks.com/blog/mpt-30b
     - Falcon 40b
-    - Gemma 7b
-    - Phi-2
+    - Gemma 7b https://www.kaggle.com/models/google/gemma/transformers/1.1-7b-it
+    - Phi-2. https://www.kaggle.com/models/Microsoft/phi/Transformers/2
 - I might the tune the lora hyperparameters, but maybe on Mistral 7B to be faster.
 - Create a python training script so I can run multiple trainings at night
 
