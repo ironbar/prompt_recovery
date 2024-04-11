@@ -39,6 +39,14 @@ This is a continuation of iterations 8 and 10, but focusing on Mistral and the d
 
 ### Wandb
 
+```python
+os.environ['WANDB_PROJECT'] = 'datacentric_mistral'
+os.environ['WANDB_NAME'] = experiment_name
+```
+
+I have learned that by setting [those environment variables](https://docs.wandb.ai/guides/track/environment-variables) I can control the project and name of the
+training, thus making much easier to inspect data in [Weights and Bias](https://wandb.ai/guillermobarbadillo/datacentric_mistral?nw=nwuserguillermobarbadillo). It's a useful tool.
+
 ## Results
 
 ## Conclusion
