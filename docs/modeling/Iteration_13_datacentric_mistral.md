@@ -83,9 +83,13 @@ w.finish()
 
 ## Conclusion
 
-All the public datasets except `gemma_suppl_rewrite` seem to be useless.
+All the public datasets except `gemma_suppl_rewrite` seem to be useless. I was able to get a LB score
+of 0.60 using that dataset. This is a worse score to `0.62` when using my own data, so I should double
+down on creating more high quality data.
 
 ## Next steps
+
+- Create more high quality data and fine-tune Mistral.
 
 ## TODO
 
