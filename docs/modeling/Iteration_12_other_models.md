@@ -31,6 +31,7 @@ I would have to look at the different prompt format of the new models.
 ```
 Instruct: Write a detailed analogy between mathematics and a lighthouse.
 Output: Mathematics is like a lighthouse. Just as a lighthouse guides ships safely to shore, mathematics provides a guiding light in the world of numbers and logic. It helps us navigate through complex problems and find solutions. Just as a lighthouse emits a steady beam of light, mathematics provides a consistent framework for reasoning and problem-solving. It illuminates the path to understanding and helps us make sense of the world around us.
+<|endoftext|>
 ```
 
 #### Gemma
@@ -45,7 +46,7 @@ who is there<end_of_turn>
 <start_of_turn>user
 Gemma<end_of_turn>
 <start_of_turn>model
-Gemma who?<end_of_turn>
+Gemma who?<end_of_turn><eos>
 ```
 
 ## Results

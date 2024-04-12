@@ -39,13 +39,14 @@ This is a continuation of iterations 8 and 10, but focusing on Mistral and the d
 
 ### Wandb
 
-```python
-os.environ['WANDB_PROJECT'] = 'datacentric_mistral'
-os.environ['WANDB_NAME'] = experiment_name
-```
+With the code below it is possible to log different runs in the same notebook to [Weights and Bias](https://wandb.ai/guillermobarbadillo/datacentric_mistral?nw=nwuserguillermobarbadillo).
 
-I have learned that by setting [those environment variables](https://docs.wandb.ai/guides/track/environment-variables) I can control the project and name of the
-training, thus making much easier to inspect data in [Weights and Bias](https://wandb.ai/guillermobarbadillo/datacentric_mistral?nw=nwuserguillermobarbadillo). It's a useful tool.
+```python
+import wandb
+w = wandb.init(reinit=True, project='datacentric_mistral', name=experiment_name)
+...
+w.finish()
+```
 
 ## Results
 
@@ -81,6 +82,8 @@ training, thus making much easier to inspect data in [Weights and Bias](https://
 ![validation loss vs lb score](res/2024-04-12-09-48-54.png)
 
 ## Conclusion
+
+All the public datasets except `gemma_suppl_rewrite` seem to be useless.
 
 ## Next steps
 
