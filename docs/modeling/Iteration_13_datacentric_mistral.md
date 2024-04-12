@@ -49,6 +49,37 @@ training, thus making much easier to inspect data in [Weights and Bias](https://
 
 ## Results
 
+### Train on public datasets
+
+| dataset                                                                                     | rows  | promtps | val loss | LB score |
+|---------------------------------------------------------------------------------------------|-------|---------|----------|----------|
+| newtonbaba                                                                                  | 2796  | 2544    | 2.32     | 0.55     |
+| nbroad                                                                                      | 4562  | 2509    | 2.4      | 0.53     |
+| galileo                                                                                     | 26160 | 1469    | 3        | 0.52     |
+| alexxxsem                                                                                   | 994   | 41      | 4.74     | 0.52     |
+| aishallmahmoud                                                                              | 26000 | 1700    | 2.57     | 0.52     |
+| winddude                                                                                    | 69487 | 61947   | 2.87     | 0.53     |
+| dipacmc77                                                                                   | 2872  | 494     | 3.22     | 0.53     |
+| gemma_suppl_rewrite                                                                         | 298   | 189     | 3.33     | 0.60     |
+| mooney_test_with_gpt4                                                                       | 359   | -       | -        | 0.61     |
+| high_quality_dataset_v1                                                                     | 280   | -       | -        | 0.59     |
+| high_quality_datases +<br>mooney_test_with_gpt4 + <br>gemma_suppl_rewrite_curated_with_gpt4 | 1200  | -       | -        | 0.62     |
+
+- Size of the dataset seems to be irrelevant
+- All the public datasets except `gemma_suppl_rewrite` seem to be useless.
+- Training on my data probed to be the best solution so far
+- The training data is very important, so maybe be creating better training data I can improve my LB score
+
+#### Validation loss
+
+![validation loss evolution](res/2024-04-12-09-44-27.png)
+
+- The validation loss diverged after step 50, that is 1600 train samples (batch size 32)
+- I might have to add a custom metric
+- There is no relation between validation loss and LB score, this is bad
+
+![validation loss vs lb score](res/2024-04-12-09-48-54.png)
+
 ## Conclusion
 
 ## Next steps
