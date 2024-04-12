@@ -61,3 +61,4 @@ training, thus making much easier to inspect data in [Weights and Bias](https://
 - [x] New notebook for sequential training
   - [x] Gain more control over wandb for easier inspection
   - [x] Increase batch size and maybe context length
+  - [ ] Make wandb work with sequential runs on the same notebook
