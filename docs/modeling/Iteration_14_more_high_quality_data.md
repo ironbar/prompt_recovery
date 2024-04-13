@@ -17,14 +17,12 @@ Thus I should focus on improving my datasets.
 
 ## Development
 
-I believe I should use `r=1` on LoRA because that gave very good LB results.
-
 ### Multi instruction theory
 
 Let's think which elements can be required to be changed on a rewritten text:
 
 - length: extend, shorten, summarize, less than n words...
-- tone: formal, informal, humorous, professional
+- tone: formal, informal, humorous, professional...
 - style: academic, fiction, in the style of some author, poem, rhyme
 - remove: remove some parts of the text
 - additions: add new elements to the text, f.e. questions, calls to action
@@ -68,7 +66,21 @@ Can you create 20 new multiple instruction prompts?
 
 This is turning to be more difficult
 
+### Train parameters
+
+- I believe I should use `r=1` on LoRA because that gave very good LB results.
+- I'm going to simplify the prompt because the previous prompt constrained the solution to be
+  a single sentence and now that won't be always the case. The new prompt is minimalistic.
+- I will be using `high_quality_dataset_v1` for validation as in the previous data-centric iteration.
+- On inference I should increase the max tokens to around 50.
+
 ## Results
+
+### Experiments
+
+- Does adding prompts imitating the leaked ones improves LB score?
+- Does adding prompts with hints improves the LB score?
+- Does creating new multi-instruction prompts improves the LB score?
 
 ## Conclusion
 
@@ -77,6 +89,6 @@ This is turning to be more difficult
 ## TODO
 
 - [x] Reread my prompts
-- [ ] Read prompts from other relevant dataset: mooney leaked, supp_rewrite
+- [x] Read prompts from other relevant dataset: mooney leaked, supp_rewrite. I don't see anything special.
 - [ ] Use ChatGPT to come up with more prompts -> autobrainstorm
-- [ ] Multi-instruction prompts (inspired on leaked data)
+- [x] Multi-instruction prompts (inspired on leaked data)
