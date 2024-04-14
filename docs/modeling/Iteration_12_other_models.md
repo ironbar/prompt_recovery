@@ -63,7 +63,15 @@ https://huggingface.co/Vezora/Mistral-22B-v0.2
 
 ## Results
 
-TODO: make a submission with each model trained on the same data and create a comparison table of LB score
+| model        | LB score |
+|--------------|----------|
+| Mistral 7B   | 0.62     |
+| Llama 2 13B  | 0.61     |
+| Mistral 22B  | 0.62     |
+| Mixtral 8x7B | 0.61     |
+
+I haven't made a submission with Gemma or Phi because considering that all other models score almost the
+same it is not promising and I have few submissions left.
 
 ## Conclusion
 
