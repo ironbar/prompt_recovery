@@ -63,6 +63,9 @@ https://huggingface.co/Vezora/Mistral-22B-v0.2
 
 ## Results
 
+These are the results of using fine-tuned models on the same data. Despite the number of parameters
+being different they all score around the same.
+
 | model        | LB score |
 |--------------|----------|
 | Mistral 7B   | 0.62     |
