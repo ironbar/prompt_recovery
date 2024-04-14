@@ -17,6 +17,8 @@ My experiments with Mistral, Mixtral and LLama 13b show tiny differences between
 I can get the same results using Phi-2 and Gemma-7b-it. If that is the case it is likely that an
 ensemble using all the models would score better than making multiple submissions with the same model.
 
+Also a new Mistral-22B model is out that it is worth trying.
+
 ## Development
 
 The idea is to use the models in transformer format so I can reuse the code for fine-tuning previous models.
@@ -47,6 +49,16 @@ who is there<end_of_turn>
 Gemma<end_of_turn>
 <start_of_turn>model
 Gemma who?<end_of_turn><eos>
+```
+
+#### Mistral-22B
+
+https://huggingface.co/Vezora/Mistral-22B-v0.2
+
+```
+<s>### System: You are a helpful assistant.
+### Human: Give me the best chili recipe you can
+### Assistant: Here is the best chili recipe...</s>
 ```
 
 ## Results
