@@ -99,7 +99,6 @@ Can you create them with the following topic?
 Consistency: Ensuring that the text maintains consistent use of terminology, voice, and narrative points of view, which can be particularly important in longer texts or texts that have been edited by multiple people.
 ```
 
-
 ### Train parameters
 
 - I believe I should use `r=1` on LoRA because that gave very good LB results.
@@ -115,17 +114,31 @@ manually modify some of my data to include those hints.
 
 ## Results
 
-### Experiments
+| experiment                       | LB score |
+|----------------------------------|----------|
+| 60 prompts imitating leaked ones | 0.61     |
+| dataset with prompt hints        | 0.61     |
+| multi instruction dataset        | 0.61     |
+| new prompts                      | 0.61     |
+| all data together                | 0.6      |
 
-- Does adding prompts imitating the leaked ones improves LB score?
-- Does adding prompts with hints improves the LB score?
-- Does creating new multi-instruction prompts improves the LB score?
+None of the trainings using new data improved the LB score. All the trainings were done with Mistral, that has a best LB score of 0.62.
 
 ## Conclusion
+
+This iteration was very disappointing. I had the hope that by tweaking the data I would have been able
+to improve the LB score but all the variations I tried failed.
+
+Currently I'm out of ideas for improving my data. I believe it is very complete. I could scale it but
+I don't know how to improve it.
 
 ## Next steps
 
 - I know that model does not seem to be relevant, but Mistral-22B is out! https://huggingface.co/Vezora/Mistral-22B-v0.2 I should try it.
+- Prompt tuning. Maybe I don't need to fine-tune the model, but do prompt tuning.
+- Prompt variations. What if I use GPT4 to rewrite the prompts and use those new variations for training.
+  I should verify that T5 similarity is high. That way each training sample would have multiple outputs.
+  The problem might be better defined.
 
 ## TODO
 
