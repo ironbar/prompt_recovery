@@ -115,13 +115,15 @@ by Mixtral and got the same score.
 
 ### Combination of transformers
 
-TODO:
+I tried making a submission with different models, but it scored worse than using the same model multiple times.
 
 ## Conclusions
 
-TODO: how much have I improved the LB score?
-
-- There is no evidence that Mixtral gives better results for this task
+- By fine-tuning on my own high quality data I was able to reach a LB score of `0.62`, better than the previous `0.61`.
+- Moreover by making multiple inferences with the same model I was able to improve that score to `0.64`.
+- Training with lora `r=1` gave same or better results than `r=16`, suggesting that this task does not need a big model change.
+- There is no evidence that Mixtral gives better results than Mistral.
+- If I concatenate the model predictions with the mean prompt that scores `0.63` I'm able to reach a LB score of `0.66`
 
 ## Next steps
 

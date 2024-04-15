@@ -2,6 +2,6 @@ nav:
     - 01_Business_Understanding.md
     - 02_Data_Understanding.md
     - modeling
+    - 05_Solution_Summary.md
     - utils
-    # - 05_Solution_Summary.md
     # - 06_Winning_Model_Documentation.md
