@@ -8,8 +8,11 @@ Plan the last submissions to be as successful as possible.
 
 ## Motivation
 
-Only two days for the end of the challenge, that means I have 10 submissions left. I'm far from the top
+Only one day for the end of the challenge, that means I have 5 submissions left. I'm far from the top
 position but there might be a shakeup.
+
+It's 12:00 and I thought the competition was ending tomorrow and I had 10 submissions left. I should
+pay more attention to the deadline.
 
 ## Development
 
@@ -26,6 +29,8 @@ The data above shows the effective batch size, I have found that when using accu
 
 The number of steps is variable, from 50 to 450. I'm going to train for 500 steps. Later I will decide
 which is the step used for submission.
+
+After visualizing the training metrics I have decided to take the checkpoints from step 200.
 
 ### Training data
 
@@ -54,13 +59,16 @@ I will train them all and later try to find the best possible combination.
 
 ### Submission planning
 
-- The four models with one prediction each, using sampling. ¿Estimated submission time?
-- The above with mean prompt
-- The four models with more predictions each, using sampling
+I can only make 5 submissions:
+
 - A single model with the maximum predictions possible, mistral_v3 is a candidate for this, f.e. mistral_v3x10
-- Same but with mean prompt
-- Mistral_v3 with different number of prompts and mean prompt.
-- A submission with each of the new models doing as much predictions as possible.
+- The four models from previous train runs, using sampling. `MMML v1`
+- The above with mean prompt
+- The four models trained on this iteration with one prediction each, using sampling. That would take 6 hours. `MMML v2`
+- The above with mean prompt
+
+The deadline is at 23:59 UTC, which is 2 hours more in my timezone. If I make the submission at 18:00
+it would take 8 hours to run, that should be enough. But there might be GPU crunch.
 
 ## Results
 
