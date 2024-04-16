@@ -31,12 +31,7 @@ make an inference with and without the mean prompt.
 
 ## What didn't work?
 
-### Bigger models
-
-At the start of the challenge I thought that Mixtral was going to make a difference in the challenge.
-In reality I have not seen any significative difference between Mistral, Mixtral or Llama.
-
-### Validation dataset
+### Validation dataset, what is the task to learn?
 
 The lack of any validation data make very difficult to design and improve a solution for the challenge.
 I could only rely on a small public dataset with rounded precision.
@@ -44,10 +39,35 @@ I could only rely on a small public dataset with rounded precision.
 At the start of the challenge I tried using some datasets for validation, but did not found a clear
 correlation between validation results and leaderboard.
 
+### Bigger models
+
+At the start of the challenge I thought that Mixtral was going to make a difference in the challenge.
+In reality I have not seen any significative difference between Mistral, Mixtral or Llama.
+
 ### Public datasets
 
 The best LB score obtained when fine-tuning on public data was `0.60`, but most of the datasets scored
 around `0.53`
+
+### Trying to improve my data
+
+I tried different strategies to improve my data:
+
+- Multi-instruction prompts
+- Imitate leaked prompts
+- Prompts on more topics as suggested by GPT4
+- Added hints to datasets
+
+None of them gave improvements on the leaderboard score.
+
+### Training with similar prompts
+
+I tried augmenting the train data using similar prompts: prompts that had the same meaning and scored high on T5 embeddings
+It didn't improve the LB score.
+
+### Scaling the data
+
+I did not get any improvement after generating 2k new samples using GPT4.
 
 ## Learnings
 

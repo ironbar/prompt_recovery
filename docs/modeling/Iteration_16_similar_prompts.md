@@ -29,10 +29,8 @@ When combining both datasets I have 15,817 samples for training, with a batch si
 
 ## Results
 
+I get a LB score of `0.61`, worse than the `0.62` which is the best score for a fine-tuned model.
+
 ## Conclusion
 
-## Next steps
-
-## TODO
-
-- [ ]
+No improvement when training on similar prompts.

@@ -41,6 +41,8 @@ It could be a conversation where I submit the suggestions and give the scores as
 
 <https://docs.google.com/spreadsheets/d/10MUcBnQporulcX5FZGhsQ7uWtT0WmlekX8NTT3fJNSc/edit#gid=1042558503&range=A1>
 
+I was unable to improve the public prompt with around 8 guess from GPT4.
+
 ## Conclusion
 
 ## Next steps

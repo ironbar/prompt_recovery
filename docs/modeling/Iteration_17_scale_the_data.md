@@ -17,12 +17,12 @@ I'm going to divide the generation process into two steps:
 1. Given prompt samples create new prompts
 2. With those prompts create new training samples
 
+I have generated 2k new training samples, with a cost of around 20$.
+
 ## Results
+
+I get a LB score of `0.60`, worse than the best one which is `0.62`
 
 ## Conclusion
 
-## Next steps
-
-## TODO
-
-- [ ]
+No improvement when scaling the data.
