@@ -3,7 +3,7 @@
 
 This was my first hands-on experience with LLMs so I'm grateful to Kaggle and Google for giving me the
 incentive to do so. It was a fun competition although I was not able to find a way to consistently improve
-my LB score. It turned out that the black magic was an adversarial attack against the T5 embedding model.
+my LB score. Almost all the things I tried failed. It turned out that the black magic was an adversarial attack against the T5 embedding model.
 
 ![solution logo](res/2024-04-17-14-47-49.png)
 
@@ -102,6 +102,12 @@ It didn't improve the LB score.
 ### Scaling the data
 
 I did not get any improvement after generating 2k new samples using GPT4.
+
+## Criticism
+
+There is ambiguity in the task of recovering a prompt. Multiple prompts can lead to the same output. Prompts could be generic or specific and lead to the same outcome. F.e. `Rewrite the sentence using a different word choice.` and `Rewrite the sentence replacing beautiful by cute`.
+
+Thus choosing similarity as the challenge metric was likely a poor choice. Instead perplexity could have been used, although at the cost of higher computational cost.
 
 ## Learnings
 
