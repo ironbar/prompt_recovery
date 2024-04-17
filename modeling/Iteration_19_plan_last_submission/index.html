@@ -1091,8 +1091,31 @@ which is the step used for submission.</p>
 <p>The deadline is at 23:59 UTC, which is 2 hours more in my timezone. If I make the submission at 18:00
 it would take 8 hours to run, that should be enough. But there might be GPU crunch.</p>
 <h2 id="results">Results</h2>
+<table>
+<thead>
+<tr>
+<th>submission</th>
+<th>public LB</th>
+<th>private LB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMML v1</td>
+<td>0.64</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>MMML v1 + 0.63 prompt</td>
+<td>0.66</td>
+<td>0.67</td>
+</tr>
+</tbody>
+</table>
 <h2 id="conclusion">Conclusion</h2>
+<p>The challenge has ended, I'm on a provisional 20th position.</p>
 <h2 id="next-steps">Next steps</h2>
+<p>Prepare a summary of the solution.</p>
 <h2 id="todo">TODO</h2>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> How many predictions is the optimum to combine with the mean prompt? I believe infinite is the best if not using mean prompts. I know that 4 is better than 3 for Mixtral_v5<ul class="task-list">
@@ -1107,7 +1130,7 @@ it would take 8 hours to run, that should be enough. But there might be GPU crun
   <small>
     
       Last update:
-      2024-04-16
+      2024-04-17
     
   </small>
 </div>

@@ -723,6 +723,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#solution-in-a-nutshell" class="md-nav__link">
+    Solution in a nutshell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-worked" class="md-nav__link">
     What worked?
   </a>
@@ -944,6 +958,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#solution-in-a-nutshell" class="md-nav__link">
+    Solution in a nutshell
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-worked" class="md-nav__link">
     What worked?
   </a>
@@ -1065,8 +1093,66 @@
 
 
 <h1 id="solution-summary">Solution Summary</h1>
-<!---https://www.kaggle.com/wiki/WinningModelDocumentationTemplate --->
+<!--- https://www.kaggle.com/wiki/WinningModelDocumentationTemplate --->
 
+<p>This was my first hands-on experience with LLMs so I'm grateful to Kaggle and Google for giving me the
+incentive to do so. It was a fun competition although I was not able to find a way to consistently improve
+my LB score. It turned out that the black magic was an adversarial attack against the T5 embedding model.</p>
+<p><img alt="solution logo" src="../res/2024-04-17-14-47-49.png" /></p>
+<h2 id="solution-in-a-nutshell">Solution in a nutshell</h2>
+<p>The solution is an ensemble of fine-tuned version with LoRa of the following models:</p>
+<table>
+<thead>
+<tr>
+<th>model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mistral 7B</td>
+</tr>
+<tr>
+<td>Llama 2 13B</td>
+</tr>
+<tr>
+<td>Mistral 22B</td>
+</tr>
+<tr>
+<td>Mistral 8x7B</td>
+</tr>
+</tbody>
+</table>
+<p>The models were fine-tuned on a small dataset of around 1000k samples created with GPT4.</p>
+<table>
+<thead>
+<tr>
+<th>submission</th>
+<th>public LB</th>
+<th>private LB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMML v1</td>
+<td>0.64</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>MMML v1 + 0.63 prompt</td>
+<td>0.66</td>
+<td>0.67</td>
+</tr>
+</tbody>
+</table>
+<p>The predictions of the models were concatenated and the <code>0.63</code> public prompt was also appended.</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><a href="https://ironbar.github.io/prompt_recovery/">Web with all the work done</a></li>
+<li><a href="https://github.com/ironbar/prompt_recovery">Github repo</a></li>
+<li><a href="https://www.kaggle.com/code/ironbar/autobots-roll-out/notebook">Submission notebook</a></li>
+<li>TODO: presentation</li>
+<li>TODO: video</li>
+</ul>
 <h2 id="what-worked">What worked?</h2>
 <h3 id="making-multiple-predictions">Making multiple predictions</h3>
 <p>Contrary to some beliefs expressed in the forum that argued that making long predictions was hurtful for similarity score, I found that simply making n predictions and concatenating them improved the LB score.</p>
@@ -1113,6 +1199,7 @@ It didn't improve the LB score.</p>
 <ul>
 <li>I have learned to use and fine-tune LLMs</li>
 <li>I have learned that it is possible to quantize LLMs to float4 and they still work very well</li>
+<li>I have learned that it is possible to do an adversarial attack against a text embedding model</li>
 </ul>
 
   <hr>
@@ -1120,7 +1207,7 @@ It didn't improve the LB score.</p>
   <small>
     
       Last update:
-      2024-04-16
+      2024-04-17
     
   </small>
 </div>
