@@ -1,0 +1,1504 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ironbar.github.io/prompt_recovery/modeling/Iteration_06_few_shot_prompt_engineering/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Iteration 6. Few shot prompt engineering - prompt_recovery</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iteration-6-few-shot-prompt-engineering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="prompt_recovery" class="md-header__button md-logo" aria-label="prompt_recovery" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            prompt_recovery
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Iteration 6. Few shot prompt engineering
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ironbar/prompt_recovery" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../01_Business_Understanding/" class="md-tabs__link">
+      Business Understanding
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../02_Data_Understanding/" class="md-tabs__link">
+      Data Understanding
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Modeling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../05_Solution_Summary/" class="md-tabs__link">
+      Solution Summary
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../utils/00_Challenge_Workflow/" class="md-tabs__link">
+        Utils
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="prompt_recovery" class="md-nav__button md-logo" aria-label="prompt_recovery" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    prompt_recovery
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ironbar/prompt_recovery" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Business_Understanding/" class="md-nav__link">
+        Business Understanding
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Data_Understanding/" class="md-nav__link">
+        Data Understanding
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Modeling</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modeling" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_01_biggest_model/" class="md-nav__link">
+        Iteration 1. Biggest model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_02_prompt_engineering/" class="md-nav__link">
+        Iteration 2. Prompt engineering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_03_study_leaked_data/" class="md-nav__link">
+        Iteration 3. Study Leaked data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_04_create_new_data/" class="md-nav__link">
+        Iteration 4. Create new data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_05_fine-tune_mixtral/" class="md-nav__link">
+        Iteration 5. Mixtral fine-tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Iteration 6. Few shot prompt engineering
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Iteration 6. Few shot prompt engineering
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    Goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development" class="md-nav__link">
+    Development
+  </a>
+  
+    <nav class="md-nav" aria-label="Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting-inferences-by-similarity" class="md-nav__link">
+    Sorting inferences by similarity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-mean-prompts" class="md-nav__link">
+    Public mean prompts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-from-public-datasets" class="md-nav__link">
+    Examples from public datasets
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples from public datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-the-prompts-by-gpt4" class="md-nav__link">
+    Analysis of the prompts by GPT4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-effect-of-sharpening-the-similarity" class="md-nav__link">
+    Understanding the effect of sharpening the similarity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playing-with-t5-embeddings" class="md-nav__link">
+    Playing with T5 embeddings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-variations" class="md-nav__link">
+    Prompt variations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forking-public-mistral-notebook" class="md-nav__link">
+    Forking public Mistral notebook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    TODO
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_07_pause_and_analysis/" class="md-nav__link">
+        Iteration 7. Pause and analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_08_create_high_quality_hard_dataset/" class="md-nav__link">
+        Iteration 8. Create a high quality hard dataset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_09_mean_prompt_optimization/" class="md-nav__link">
+        Iteration 9. Mean prompt optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_10_fine-tune_on_high_quality_data/" class="md-nav__link">
+        Iteration 10. Fine-tune on high quality data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_11_llama_2/" class="md-nav__link">
+        Iteration 11. Llama 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_12_other_models/" class="md-nav__link">
+        Iteration 12. Fine-tuning Phi-2 and Gemma
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_13_datacentric_mistral/" class="md-nav__link">
+        Iteration 13. Data centric approach around Mistral 7B
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_14_more_high_quality_data/" class="md-nav__link">
+        Iteration 14. More high quality data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_15_prompt_tuning/" class="md-nav__link">
+        Iteration 15. Prompt tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_16_similar_prompts/" class="md-nav__link">
+        Iteration 16. Similar prompts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_17_scale_the_data/" class="md-nav__link">
+        Iteration 17. Scale the data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_18_generate_data_with_gemma/" class="md-nav__link">
+        Iteration 18. Generate data with Gemma
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_19_plan_last_submission/" class="md-nav__link">
+        Iteration 19. Plan the last submissions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Iteration_n/" class="md-nav__link">
+        Iteration n. Iteration_title
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_Solution_Summary/" class="md-nav__link">
+        Solution Summary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Utils" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/00_Challenge_Workflow/" class="md-nav__link">
+        Challenge workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/markdown_cheatsheet/" class="md-nav__link">
+        Markdown cheatsheet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/methodology/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    Goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development" class="md-nav__link">
+    Development
+  </a>
+  
+    <nav class="md-nav" aria-label="Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting-inferences-by-similarity" class="md-nav__link">
+    Sorting inferences by similarity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-mean-prompts" class="md-nav__link">
+    Public mean prompts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-from-public-datasets" class="md-nav__link">
+    Examples from public datasets
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples from public datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-the-prompts-by-gpt4" class="md-nav__link">
+    Analysis of the prompts by GPT4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-effect-of-sharpening-the-similarity" class="md-nav__link">
+    Understanding the effect of sharpening the similarity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playing-with-t5-embeddings" class="md-nav__link">
+    Playing with T5 embeddings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-variations" class="md-nav__link">
+    Prompt variations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forking-public-mistral-notebook" class="md-nav__link">
+    Forking public Mistral notebook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    TODO
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/ironbar/prompt_recovery/edit/master/docs/modeling/Iteration_06_few_shot_prompt_engineering.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="iteration-6-few-shot-prompt-engineering">Iteration 6. Few shot prompt engineering</h1>
+<p><em>01-04-2024</em></p>
+<!---
+The work is done using short iterations. Each iteration needs to have a very
+clear goal. This allows to gain greater knowledge of the problem on each iteration.
+--->
+
+<h2 id="goal">Goal</h2>
+<p>Try different examples for few shot prompt. Can I learn more about the style of the prompts used
+on the test set?</p>
+<h2 id="motivation">Motivation</h2>
+<p>I already know how to do few-shot prompting and fine-tuning of Mixtral. I have the tools to solve
+the challenge but I don't know which data I have to use with those tools.</p>
+<p>I need to gather more information about the test set.</p>
+<h2 id="development">Development</h2>
+<h3 id="sorting-inferences-by-similarity">Sorting inferences by similarity</h3>
+<p>To be able to use all the public datasets for few shot prompting I have to first sort the prompts.
+My initial idea was to use a set of prompts as diverse as possible, which is equivalent to minimizing
+the similarity between a set of prompts.</p>
+<p>I have created a notebook that:</p>
+<ol>
+<li>Samples n prompts from a dataset</li>
+<li>Computes T5 embeddings from the prompts</li>
+<li>Finds the center of the embeddings and chooses the center as the start point</li>
+<li>Iteratively adds new prompts by choosing the less similar prompt to the already selected</li>
+</ol>
+<h2 id="results">Results</h2>
+<h3 id="public-mean-prompts">Public mean prompts</h3>
+<p>Let's see what can we learn from the public mean prompts.</p>
+<p><a href="https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/488150">https://www.kaggle.com/competitions/llm-prompt-recovery/discussion/488150</a></p>
+<p>Some of the prompts are really long. The first one is 78 tokens according to OpenAI. Maybe that is one
+way of decreasing the uncertainty on the predictions. I could rephrase the prompt in different ways, give different levels of details of the prompt...</p>
+<h3 id="examples-from-public-datasets">Examples from public datasets</h3>
+<p>I have tried submitting examples from different public datasets. I also tried using a different number of examples
+for few shot prompting.</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th>input tokens</th>
+<th>n_examples</th>
+<th>LB score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alexxxsem_gemma</td>
+<td>3000</td>
+<td>12</td>
+<td>0.54</td>
+</tr>
+<tr>
+<td>alexxxsem_gemini</td>
+<td>4000</td>
+<td>15</td>
+<td>0.53</td>
+</tr>
+<tr>
+<td>alexxxsem_gemma</td>
+<td>4000</td>
+<td>15</td>
+<td>0.51</td>
+</tr>
+<tr>
+<td>dipamc77</td>
+<td>4000</td>
+<td>15</td>
+<td>0.59</td>
+</tr>
+<tr>
+<td>gali1eo</td>
+<td>4000</td>
+<td>8</td>
+<td>0.59</td>
+</tr>
+<tr>
+<td>gemma_suppl_rewrite</td>
+<td>4000</td>
+<td>13</td>
+<td>0.53</td>
+</tr>
+<tr>
+<td>mooney_leaked_gpt4_labelled</td>
+<td>4000</td>
+<td>18</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>nbroad-v1</td>
+<td>4000</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>nbroad-v2</td>
+<td>4000</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>newtonbaba_gemini</td>
+<td>4000</td>
+<td>11</td>
+<td>0.57</td>
+</tr>
+<tr>
+<td>newtonbaba_gemma</td>
+<td>4000</td>
+<td>7</td>
+<td>0.62</td>
+</tr>
+<tr>
+<td>thedrcat_gemma100</td>
+<td>4000</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>thedrcat_gemma1000</td>
+<td>4000</td>
+<td>9</td>
+<td>0.53</td>
+</tr>
+<tr>
+<td>winddude</td>
+<td>4000</td>
+<td>4</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>alexxxsem_gemma</td>
+<td>6000</td>
+<td>23</td>
+<td>0.53</td>
+</tr>
+<tr>
+<td>dipamc77</td>
+<td>6000</td>
+<td>22</td>
+<td>0.59</td>
+</tr>
+<tr>
+<td>gali1eo</td>
+<td>6000</td>
+<td>12</td>
+<td>0.61</td>
+</tr>
+<tr>
+<td>mooney_leaked_gpt4_labelled</td>
+<td>6000</td>
+<td>27</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>newtonbaba_gemma</td>
+<td>6000</td>
+<td>11</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>winddude</td>
+<td>6000</td>
+<td>7</td>
+<td>0.61</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="lb_score_vs_n_examples" src="../res/2024-04-03-10-05-32.png" /></p>
+<ul>
+<li>The number of examples does not correlate with LB score, adding more examples from the same domain does not result in higher scores</li>
+<li>The higher LB score is obtained with just 7 examples, while we have submissions with 27 examples that score lower</li>
+<li>Thus it does not seem to be a problem related to the number of examples, but to the style or quality of them</li>
+<li>There is a great variability in LB score: from 0.51 to 0.62</li>
+<li>How is it possible that most of the evaluations are below the simple baseline of <code>Improve the text to this.</code></li>
+</ul>
+<h4 id="analysis-of-the-prompts-by-gpt4">Analysis of the prompts by GPT4</h4>
+<p>GPT4 says that the most diverse prompts are from Newtonbaba, but it is not sure about the other datasets.
+From my point of view I don't see a clear pattern or differences between the prompts.</p>
+<ul>
+<li><a href="https://chat.openai.com/c/e92c50d3-079a-42ba-b844-a438d2a3531d">https://chat.openai.com/c/e92c50d3-079a-42ba-b844-a438d2a3531d</a></li>
+<li><a href="https://chat.openai.com/c/ee12f003-7485-4ba8-b684-b2094ffa4a96">https://chat.openai.com/c/ee12f003-7485-4ba8-b684-b2094ffa4a96</a></li>
+</ul>
+<h3 id="understanding-the-effect-of-sharpening-the-similarity">Understanding the effect of sharpening the similarity</h3>
+<p><a href="https://www.kaggle.com/code/ironbar/understanding-the-effect-of-sharpening">https://www.kaggle.com/code/ironbar/understanding-the-effect-of-sharpening</a></p>
+<ul>
+<li>The sharpened cosine similarity score is not penalizing scores with high variance. If a model scores lower than other model is simply because the predicted similarity is lower.</li>
+<li>In fact the effect is the opposite. The most extreme example I can think is this:</li>
+<li>A similarity distribution of <code>[0.5, 0.5]</code> will have a mean sharpened score of <code>0.125 == 0.5**3</code></li>
+<li>A similarity distribution of <code>[1, 0]</code> has the same mean as the previous distribution but the mean sharped score is <code>0.5</code></li>
+</ul>
+<p>So the metric is favouring very good guesses.</p>
+<p>If <code>Improve the text to this.</code> is scoring <code>0.60</code> and a naive Mixtral model scores <code>0.52</code> is simply because the first one is getting a higher similarity with the test set prompts, not because Mixtral predictions have greater variance.</p>
+<h3 id="playing-with-t5-embeddings">Playing with T5 embeddings</h3>
+<p><a href="https://www.kaggle.com/code/ironbar/t5-travesty-when-good-prompts-score-bad">https://www.kaggle.com/code/ironbar/t5-travesty-when-good-prompts-score-bad</a></p>
+<ul>
+<li>Despite trying it hard I do not get scores below <code>0.60</code>. If the predictions capture the intent of the prompt I should be getting scores above <code>0.7</code> easily. </li>
+<li>On my examples <code>Improve the text to this.</code> scores below <code>0.60</code>, sometimes as worse as <code>0.38</code></li>
+<li>One way to fight uncertainty might be to mix generic and specific prompts in the same answer.</li>
+<li>Comparing the prompt against similar sentences generated by GPT4 returned scores above <code>0.70</code></li>
+</ul>
+<h3 id="prompt-variations">Prompt variations</h3>
+<p>Creating prompt variations was a difficult task. Distilling all the changes into a prompt is not an easy task.</p>
+<table>
+<thead>
+<tr>
+<th>experiment</th>
+<th>LB score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baseline</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>always use "text"</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>improve the text</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>shorter prompts</td>
+<td>0.61</td>
+</tr>
+<tr>
+<td>abstract prompt</td>
+<td>0.61</td>
+</tr>
+<tr>
+<td>specific prompts</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>gemini_synonym_prompt</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>gpt3.5_synonym_prompt</td>
+<td>0.57</td>
+</tr>
+<tr>
+<td>specific + abstract</td>
+<td>0.61</td>
+</tr>
+</tbody>
+</table>
+<p>I have tried many prompt variations and the LB score barely changed. It thus seems that the prompt
+style is not important, but to capture the intent of the ground truth prompt.</p>
+<h3 id="forking-public-mistral-notebook">Forking public Mistral notebook</h3>
+<p>A <a href="https://www.kaggle.com/code/richolson/mistral-7b-prompt-recovery-version-2">public notebook</a> was published
+that used Mistral 7B and few-shot prompting and achieved a LB score of <code>0.62</code>.</p>
+<p>I thought that replacing Mistral by Mixtral will result in improvements but that was not the case. The score
+was exactly the same. That is weird because in the benchmarks Mixtral is much better.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>There are many learnings from this iteration:</p>
+<ul>
+<li>It seems that the style of the prompts is not important.</li>
+<li>The number of examples in few-shot prompting is not correlated with LB score</li>
+<li>Changing the examples in few-shot prompting can have a big effect on LB score</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<h2 id="todo">TODO</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked/> What if I choose a set of samples, and rewrite the prompts with different styles and make submissions? More abstract, more generic, longer or shorter, text or story...</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2024-04-04
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Iteration_05_fine-tune_mixtral/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Iteration 5. Mixtral fine-tuning" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Iteration 5. Mixtral fine-tuning
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Iteration_07_pause_and_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Iteration 7. Pause and analysis" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Iteration 7. Pause and analysis
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/guillermobarbadillo/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/guille_bar" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCOHmUwHnd2hmUpiDzaQ1Isg" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.kaggle.com/ironbar" target="_blank" rel="noopener" title="www.kaggle.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M304.2 501.5 158.4 320.3 298.2 185c2.6-2.7 1.7-10.5-5.3-10.5h-69.2c-3.5 0-7 1.8-10.5 5.3L80.9 313.5V7.5q0-7.5-7.5-7.5H21.5Q14 0 14 7.5v497q0 7.5 7.5 7.5h51.9q7.5 0 7.5-7.5v-109l30.8-29.3 110.5 140.6c3 3.5 6.5 5.3 10.5 5.3h66.9q5.25 0 6-3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../javascript/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
