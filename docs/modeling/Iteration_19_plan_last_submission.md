@@ -72,9 +72,18 @@ it would take 8 hours to run, that should be enough. But there might be GPU crun
 
 ## Results
 
+| submission            | public LB | private LB |
+|-----------------------|-----------|------------|
+| MMML v1               | 0.64      | 0.65       |
+| MMML v1 + 0.63 prompt | 0.66      | 0.67       |
+
 ## Conclusion
 
+The challenge has ended, I'm on a provisional 20th position.
+
 ## Next steps
+
+Prepare a summary of the solution.
 
 ## TODO
 
