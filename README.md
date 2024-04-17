@@ -4,6 +4,8 @@ Recover the prompt used to transform a given text
 
 [Link to the page of the challenge](https://www.kaggle.com/competitions/llm-prompt-recovery)
 
+![solution logo](docs/res/2024-04-17-14-47-49.png)
+
 ## Docs
 
 [https://ironbar.github.io/prompt_recovery](https://ironbar.github.io/prompt_recovery)

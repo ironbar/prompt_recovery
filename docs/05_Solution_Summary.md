@@ -1,5 +1,39 @@
 # Solution Summary
-<!---https://www.kaggle.com/wiki/WinningModelDocumentationTemplate --->
+<!--- https://www.kaggle.com/wiki/WinningModelDocumentationTemplate --->
+
+This was my first hands-on experience with LLMs so I'm grateful to Kaggle and Google for giving me the
+incentive to do so. It was a fun competition although I was not able to find a way to consistently improve
+my LB score. It turned out that the black magic was an adversarial attack against the T5 embedding model.
+
+![solution logo](res/2024-04-17-14-47-49.png)
+
+## Solution in a nutshell
+
+The solution is an ensemble of fine-tuned version with LoRa of the following models:
+
+| model        |
+|--------------|
+| Mistral 7B   |
+| Llama 2 13B  |
+| Mistral 22B  |
+| Mistral 8x7B |
+
+The models were fine-tuned on a small dataset of around 1000k samples created with GPT4.
+
+| submission            | public LB | private LB |
+|-----------------------|-----------|------------|
+| MMML v1               | 0.64      | 0.65       |
+| MMML v1 + 0.63 prompt | 0.66      | 0.67       |
+
+The predictions of the models were concatenated and the `0.63` public prompt was also appended.
+
+## Links
+
+- [Web with all the work done](https://ironbar.github.io/prompt_recovery/)
+- [Github repo](https://github.com/ironbar/prompt_recovery)
+- [Submission notebook](https://www.kaggle.com/code/ironbar/autobots-roll-out/notebook)
+- TODO: presentation
+- TODO: video
 
 ## What worked?
 
@@ -73,3 +107,4 @@ I did not get any improvement after generating 2k new samples using GPT4.
 
 - I have learned to use and fine-tune LLMs
 - I have learned that it is possible to quantize LLMs to float4 and they still work very well
+- I have learned that it is possible to do an adversarial attack against a text embedding model

@@ -1,6 +1,6 @@
-# prompt_recovery
+# LLM Prompt Recovery
 
-![](res/2024-03-18-09-48-43.png)
+![solution logo](res/2024-04-17-14-47-49.png)
 
 Recover the prompt used to transform a given text
 
