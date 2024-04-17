@@ -833,6 +833,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#criticism" class="md-nav__link">
+    Criticism
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#learnings" class="md-nav__link">
     Learnings
   </a>
@@ -1068,6 +1075,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#criticism" class="md-nav__link">
+    Criticism
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#learnings" class="md-nav__link">
     Learnings
   </a>
@@ -1097,7 +1111,7 @@
 
 <p>This was my first hands-on experience with LLMs so I'm grateful to Kaggle and Google for giving me the
 incentive to do so. It was a fun competition although I was not able to find a way to consistently improve
-my LB score. It turned out that the black magic was an adversarial attack against the T5 embedding model.</p>
+my LB score. Almost all the things I tried failed. It turned out that the black magic was an adversarial attack against the T5 embedding model.</p>
 <p><img alt="solution logo" src="../res/2024-04-17-14-47-49.png" /></p>
 <h2 id="solution-in-a-nutshell">Solution in a nutshell</h2>
 <p>The solution is an ensemble of fine-tuned version with LoRa of the following models:</p>
@@ -1195,6 +1209,9 @@ around <code>0.53</code></p>
 It didn't improve the LB score.</p>
 <h3 id="scaling-the-data">Scaling the data</h3>
 <p>I did not get any improvement after generating 2k new samples using GPT4.</p>
+<h2 id="criticism">Criticism</h2>
+<p>There is ambiguity in the task of recovering a prompt. Multiple prompts can lead to the same output. Prompts could be generic or specific and lead to the same outcome. F.e. <code>Rewrite the sentence using a different word choice.</code> and <code>Rewrite the sentence replacing beautiful by cute</code>.</p>
+<p>Thus choosing similarity as the challenge metric was likely a poor choice. Instead perplexity could have been used, although at the cost of higher computational cost.</p>
 <h2 id="learnings">Learnings</h2>
 <ul>
 <li>I have learned to use and fine-tune LLMs</li>
