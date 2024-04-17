@@ -9,7 +9,7 @@ my LB score. Almost all the things I tried failed. It turned out that the black 
 
 ## Solution in a nutshell
 
-The solution is an ensemble of fine-tuned version with LoRa of the following models:
+The solution is an ensemble of fine-tuned version with LoRA of the following models:
 
 | model        |
 |--------------|
@@ -41,7 +41,7 @@ The predictions of the models were concatenated and the `0.63` public prompt was
 
 Contrary to some beliefs expressed in the forum that argued that making long predictions was hurtful for similarity score, I found that simply making n predictions and concatenating them improved the LB score.
 
-For example I could improve the score from `0.62` to `0.64` simply by doing 4 inferences with v5 model.
+For example, I could improve the score from `0.62` to `0.64` simply by doing 4 inferences with v5 model.
 
 ### Fine-tuning on my own data
 
@@ -50,12 +50,12 @@ fine-tuning on public data was `0.60`.
 
 ### Few-shot prompt
 
-This worked surprisingly well. Depending on the given samples it was possible to score up to `0.62` on leaderboard. However the inference was slow due to having such a big input prompt. Fine-tuning a model
+This worked surprisingly well. Depending on the given samples, it was possible to score up to `0.62` on THE leaderboard. However, the inference was slow due to having such a big input prompt. Fine-tuning a model
 resulted on a much faster inference that allowed for multiple inferences.
 
 ### Mean prompts
 
-Making a submission with `Please improve this text using the writing style with maintaining the original meaning but altering the tone.` returned an score of `0.63`.
+Making a submission with `Please improve this text using the writing style with maintaining the original meaning but altering the tone.` returned a score of `0.63`.
 
 This is probably a combination of using a poor chosen metric with a dumb model and the power of optimization
 of Kaggle, where 2k people make 5 submissions a day.
@@ -70,13 +70,13 @@ make an inference with and without the mean prompt.
 The lack of any validation data make very difficult to design and improve a solution for the challenge.
 I could only rely on a small public dataset with rounded precision.
 
-At the start of the challenge I tried using some datasets for validation, but did not found a clear
+At the start of the challenge I tried using some datasets for validation, but did not find a clear
 correlation between validation results and leaderboard.
 
 ### Bigger models
 
 At the start of the challenge I thought that Mixtral was going to make a difference in the challenge.
-In reality I have not seen any significative difference between Mistral, Mixtral or Llama.
+In reality, I have not seen any significative difference between Mistral, Mixtral or Llama.
 
 ### Public datasets
 
@@ -107,7 +107,7 @@ I did not get any improvement after generating 2k new samples using GPT4.
 
 There is ambiguity in the task of recovering a prompt. Multiple prompts can lead to the same output. Prompts could be generic or specific and lead to the same outcome. F.e. `Rewrite the sentence using a different word choice.` and `Rewrite the sentence replacing beautiful by cute`.
 
-Thus choosing similarity as the challenge metric was likely a poor choice. Instead perplexity could have been used, although at the cost of higher computational cost.
+Thus, choosing similarity as the challenge metric was likely a poor choice. Instead, perplexity could have been used, although at the cost of higher computational cost.
 
 ## Learnings
 
