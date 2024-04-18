@@ -32,7 +32,7 @@ The predictions of the models were concatenated and the `0.63` public prompt was
 - [Web with all the work done](https://ironbar.github.io/prompt_recovery/)
 - [Github repo](https://github.com/ironbar/prompt_recovery)
 - [Submission notebook](https://www.kaggle.com/code/ironbar/autobots-roll-out/notebook)
-- TODO: presentation
+- [Solution presentation slides](https://docs.google.com/presentation/d/129C_GsIlyXtxWUhWV4u2A93bSKCLPrtVzwPWTBOvgLQ/edit?usp=sharing)
 - TODO: video
 
 ## What worked?
@@ -102,6 +102,10 @@ It didn't improve the LB score.
 ### Scaling the data
 
 I did not get any improvement after generating 2k new samples using GPT4.
+
+### Using GPT4 to find a better mean prompt
+
+Maybe I did not do enough attempts (around 8) but GPT4 was unable to find a better mean prompt given the public available mean prompts and its scores.
 
 ## Criticism
 
