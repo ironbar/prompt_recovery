@@ -827,6 +827,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-gpt4-to-find-a-better-mean-prompt" class="md-nav__link">
+    Using GPT4 to find a better mean prompt
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1069,6 +1076,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-gpt4-to-find-a-better-mean-prompt" class="md-nav__link">
+    Using GPT4 to find a better mean prompt
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1114,7 +1128,7 @@ incentive to do so. It was a fun competition although I was not able to find a w
 my LB score. Almost all the things I tried failed. It turned out that the black magic was an adversarial attack against the T5 embedding model.</p>
 <p><img alt="solution logo" src="../res/2024-04-17-14-47-49.png" /></p>
 <h2 id="solution-in-a-nutshell">Solution in a nutshell</h2>
-<p>The solution is an ensemble of fine-tuned version with LoRa of the following models:</p>
+<p>The solution is an ensemble of fine-tuned version with LoRA of the following models:</p>
 <table>
 <thead>
 <tr>
@@ -1164,21 +1178,21 @@ my LB score. Almost all the things I tried failed. It turned out that the black 
 <li><a href="https://ironbar.github.io/prompt_recovery/">Web with all the work done</a></li>
 <li><a href="https://github.com/ironbar/prompt_recovery">Github repo</a></li>
 <li><a href="https://www.kaggle.com/code/ironbar/autobots-roll-out/notebook">Submission notebook</a></li>
-<li>TODO: presentation</li>
-<li>TODO: video</li>
+<li><a href="https://docs.google.com/presentation/d/129C_GsIlyXtxWUhWV4u2A93bSKCLPrtVzwPWTBOvgLQ/edit?usp=sharing">Solution presentation slides</a></li>
+<li><a href="https://youtu.be/jijCxtqn2pA?si=T4Bv7kKYzd1cabOt">Youtube video</a></li>
 </ul>
 <h2 id="what-worked">What worked?</h2>
 <h3 id="making-multiple-predictions">Making multiple predictions</h3>
 <p>Contrary to some beliefs expressed in the forum that argued that making long predictions was hurtful for similarity score, I found that simply making n predictions and concatenating them improved the LB score.</p>
-<p>For example I could improve the score from <code>0.62</code> to <code>0.64</code> simply by doing 4 inferences with v5 model.</p>
+<p>For example, I could improve the score from <code>0.62</code> to <code>0.64</code> simply by doing 4 inferences with v5 model.</p>
 <h3 id="fine-tuning-on-my-own-data">Fine-tuning on my own data</h3>
 <p>Fine-tuning LLMs on my own data returned a LB score of <code>0.62</code>. By comparison the best score obtained
 fine-tuning on public data was <code>0.60</code>.</p>
 <h3 id="few-shot-prompt">Few-shot prompt</h3>
-<p>This worked surprisingly well. Depending on the given samples it was possible to score up to <code>0.62</code> on leaderboard. However the inference was slow due to having such a big input prompt. Fine-tuning a model
+<p>This worked surprisingly well. Depending on the given samples, it was possible to score up to <code>0.62</code> on THE leaderboard. However, the inference was slow due to having such a big input prompt. Fine-tuning a model
 resulted on a much faster inference that allowed for multiple inferences.</p>
 <h3 id="mean-prompts">Mean prompts</h3>
-<p>Making a submission with <code>Please improve this text using the writing style with maintaining the original meaning but altering the tone.</code> returned an score of <code>0.63</code>.</p>
+<p>Making a submission with <code>Please improve this text using the writing style with maintaining the original meaning but altering the tone.</code> returned a score of <code>0.63</code>.</p>
 <p>This is probably a combination of using a poor chosen metric with a dumb model and the power of optimization
 of Kaggle, where 2k people make 5 submissions a day.</p>
 <p>But it is possible that the mean prompt will work as well on the hidden test set, so I believe I should
@@ -1187,11 +1201,11 @@ make an inference with and without the mean prompt.</p>
 <h3 id="validation-dataset-what-is-the-task-to-learn">Validation dataset, what is the task to learn?</h3>
 <p>The lack of any validation data make very difficult to design and improve a solution for the challenge.
 I could only rely on a small public dataset with rounded precision.</p>
-<p>At the start of the challenge I tried using some datasets for validation, but did not found a clear
+<p>At the start of the challenge I tried using some datasets for validation, but did not find a clear
 correlation between validation results and leaderboard.</p>
 <h3 id="bigger-models">Bigger models</h3>
 <p>At the start of the challenge I thought that Mixtral was going to make a difference in the challenge.
-In reality I have not seen any significative difference between Mistral, Mixtral or Llama.</p>
+In reality, I have not seen any significative difference between Mistral, Mixtral or Llama.</p>
 <h3 id="public-datasets">Public datasets</h3>
 <p>The best LB score obtained when fine-tuning on public data was <code>0.60</code>, but most of the datasets scored
 around <code>0.53</code></p>
@@ -1209,9 +1223,11 @@ around <code>0.53</code></p>
 It didn't improve the LB score.</p>
 <h3 id="scaling-the-data">Scaling the data</h3>
 <p>I did not get any improvement after generating 2k new samples using GPT4.</p>
+<h3 id="using-gpt4-to-find-a-better-mean-prompt">Using GPT4 to find a better mean prompt</h3>
+<p>Maybe I did not do enough attempts (around 8) but GPT4 was unable to find a better mean prompt given the public available mean prompts and its scores.</p>
 <h2 id="criticism">Criticism</h2>
 <p>There is ambiguity in the task of recovering a prompt. Multiple prompts can lead to the same output. Prompts could be generic or specific and lead to the same outcome. F.e. <code>Rewrite the sentence using a different word choice.</code> and <code>Rewrite the sentence replacing beautiful by cute</code>.</p>
-<p>Thus choosing similarity as the challenge metric was likely a poor choice. Instead perplexity could have been used, although at the cost of higher computational cost.</p>
+<p>Thus, choosing similarity as the challenge metric was likely a poor choice. Instead, perplexity could have been used, although at the cost of higher computational cost.</p>
 <h2 id="learnings">Learnings</h2>
 <ul>
 <li>I have learned to use and fine-tune LLMs</li>
@@ -1224,7 +1240,7 @@ It didn't improve the LB score.</p>
   <small>
     
       Last update:
-      2024-04-17
+      2024-04-18
     
   </small>
 </div>
