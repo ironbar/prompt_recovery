@@ -33,7 +33,7 @@ The predictions of the models were concatenated and the `0.63` public prompt was
 - [Github repo](https://github.com/ironbar/prompt_recovery)
 - [Submission notebook](https://www.kaggle.com/code/ironbar/autobots-roll-out/notebook)
 - [Solution presentation slides](https://docs.google.com/presentation/d/129C_GsIlyXtxWUhWV4u2A93bSKCLPrtVzwPWTBOvgLQ/edit?usp=sharing)
-- TODO: video
+- [Youtube video](https://youtu.be/jijCxtqn2pA?si=T4Bv7kKYzd1cabOt)
 
 ## What worked?
 
